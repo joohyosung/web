@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 변수 선언 - var, let
+      //타입이 없음
+      // var :  재선언 가능
+      // let : 같은 스코프 안에서   재선언 불가
+
+      var value1 = 4; // 선언 및 할당
+      var value2 = 5;
+      var value1 = 6; // 재선언 및 재할당
+
+      console.log(value1);
+
+      // Uncaught SyntaxError: Identifier 'value2' has already been declared (at variable1.html:20:11)
+      //   let value2 = 7;
+      console.log(value2);
+
+      {
+        let value2 = 7;
+        console.log("블럭 안에서", value2);
+      }
+    </script>
+  </body>
+</html>

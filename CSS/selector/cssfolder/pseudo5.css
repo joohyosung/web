@@ -1,0 +1,40 @@
+/* li:first-child {
+  color: red;
+}
+
+li:last-child {
+  text-decoration: underline;
+}
+
+li:nth-child(2) {
+  color: blue;
+}
+
+li:nth-child(3) {
+  color: purple;
+} */
+
+/* n은 0부터 시작한다 */
+/* li:nth-child(2n) {
+  background-color: silver;
+} */
+
+/* li:nth-child(2n + 1) {
+  background-color: yellow;
+} */
+
+/* li:nth-child(-n + 3) {
+  background-color: green;
+} */
+
+li:nth-child(n + 4) {
+  background-color: silver;
+}
+
+.fruits p:nth-child(2) {
+  color: red;
+}
+
+.box-group > :first-child {
+  color: red;
+}

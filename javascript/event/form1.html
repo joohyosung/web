@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <div>
+        <input type="text" name="text1" id="text1" />
+        <input type="button" value="제출" />
+      </div>
+    </form>
+    <p id="result"></p>
+    <script>
+      // text에 사용자가 입력 후 버튼 클릭 시
+      // 사용자의 입력 내용 p 태그 안에 보여주기
+      document
+        .querySelector("[type='button']")
+        .addEventListener("click", () => {
+          // text 내용 가져오기
+          let value = document.querySelector("#text1").value;
+
+          // p 태그 가져온 후 text 넣어서 보여주기
+          document.querySelector("#result").innerHTML = value;
+        });
+
+      // text 내용이 변화가 일어나면 사용자의 입력 내용
+      // p 태그 안에 보여주기
+      document.querySelector("#text1").addEventListener("change", (e) => {
+        document.querySelector("#result").innerHTML = e.target.value;
+      });
+    </script>
+  </body>
+</html>

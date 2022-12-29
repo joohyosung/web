@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header" class="header">Header 1</h1>
+    <h2>header 2</h2>
+    <h3>header 3</h3>
+    <div id="top">
+      <div id="nested">내용</div>
+    </div>
+    <script>
+      // 로드 될 때 h2 요소 삭제
+      window.onload = function () {
+        document.querySelector("h2").remove();
+
+        // 요소 삭제 - remove()
+        // document.querySelector("#nested").remove();
+
+        // 부모 기준에서 특정 자식 삭제 - removeChild()
+        document
+          .querySelector("#top")
+          .removeChild(document.querySelector("#nested"));
+
+        // 속성 삭제 - removeAttribute('속성명')
+        document.getElementById("header").removeAttribute("class");
+      };
+    </script>
+  </body>
+</html>

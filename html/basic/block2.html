@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        margin: 20px;
+        padding: 20px;
+      }
+      span {
+        background-color: blue;
+        /* width: 100px;
+        height: 100px; */
+      }
+      .inline {
+        margin: 20px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- block : 너비(100%), 높이(0), margin : 상, 하, 좌, 우 적용-->
+    <div>블럭컨텐츠</div>
+    <div>블럭컨텐츠</div>
+    <div>블럭컨텐츠</div>
+    <div>블럭컨텐츠</div>
+    <div>블럭컨텐츠</div>
+    <p>문단</p>
+    <!--inline : 너비/높이(컨텐츠만큼만), 너비(100%), 높이(0), margin : 좌우 마진만 적용
+        paddind : 좌우만 적용 
+    -->
+    <span class="inline">123456</span>
+    <span class="inline">123456</span>
+    <span class="inline">123456</span>
+    <span>123456</span>
+    <span>123456</span>
+  </body>
+</html>

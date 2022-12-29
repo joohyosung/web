@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 문자 : 객체
+      //        '',""
+      // let msg = '안녕하세요' or let msg = new String('안녕하세요')
+
+      let msg = "Hello Javascript";
+
+      document.write("특정 위치의 문자 반환 : ", msg.charAt(3), "<br>");
+      document.write("문자 찾기 : ", msg.indexOf("J"), "<br>");
+      document.write("문자 찾기 : ", msg.match("Ja"), "<br>");
+      document.write("문자 찾기 : ", msg.match("boy"), "<br>");
+      document.write("특정 문자 변경 : ", msg.replace("Hello", "Hi"), "<br>");
+      document.write(
+        "지정된 위치의 문자열 자르기 : ",
+        msg.substring(6, 10),
+        "<br>"
+      );
+      document.write(
+        "지정된 위치의 문자열 자르기 : ",
+        msg.slice(6, 10),
+        "<br>"
+      );
+      document.write("공백제거 : ", "Hello    ".trim(), "<br>");
+      document.write("대문자 변경 : ", msg.toUpperCase(), "<br>");
+      document.write("소문자 변경 : ", msg.toLowerCase(), "<br>");
+
+      // 사용자한테 이름과 전화번호 입력 받기
+      // 이름 : 영어, 전화번호 000-0000-0000
+      // => 영어 이름은 대문자로 출력, 전화번호는 000-####-0000
+
+      let name = prompt("이름을 입력하시오.", "nsme");
+      let phone = prompt("전화번호를 입력하시오.", "000-0000-0000");
+
+      document.write(name.toUpperCase());
+      document.write(phone.replace(phone.substring(4, 8), "####"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container li {
+        float: left;
+        background-color: lightblue;
+        height: 50px;
+        list-style-type: none;
+        width: 25%;
+      }
+      .container::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>메뉴3</li>
+      <li>메뉴4</li>
+    </ul>
+    <div id="result"></div>
+    <script>
+      // 페이지의 새로고침이 없이 코드 실행
+      // 메뉴4를 클릭하면 서버에게 요청 보내기
+      // ./data/version2.json 가져오기
+      const lastMenu = document
+        .querySelector(".container li:last-child")
+        .addEventListener("click", () => {
+          fetch("./data/version2.json")
+            .then((response) => response.json()) // 서버로부터 도착한 데이터를 원하는 타입으로 변경
+            .then((result) => {
+              console.log(result);
+              let data = "<ul>";
+              for (let i = 0; i < result.length; i++) {
+                console.log("version", result[i].version);
+                console.log("codename", result[i].codename);
+                data += "<li>버전 : " + result[i].version + "</li>";
+                data += "<li>코드명 : " + result[i].codename + "</li>";
+              }
+
+              data += "</ul>";
+
+              document.querySelector("#result").innerHTML = data;
+            })
+            .catch((error) => consol.error("error"));
+        });
+    </script>
+  </body>
+</html>

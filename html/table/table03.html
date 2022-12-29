@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 100%;
+      }
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        ColSpan 병합
+      </caption>
+      <tr>
+        <th colspan="2">Name</th>
+        <!-- <th>Name</th> -->
+        <th>Age</th>
+      </tr>
+      <tr>
+        <td>jill</td>
+        <td>smith</td>
+        <td>43</td>
+      </tr>
+      <tr>
+        <td>Eve</td>
+        <td>Jackson</td>
+        <td>57</td>
+      </tr>
+    </table>
+    <br />
+    <table>
+      <caption>
+        RowSpan 병합
+      </caption>
+      <tr>
+        <th>Name</th>
+        <td>jill</td>
+      </tr>
+      <tr>
+        <th rowspan="2">Phone</th>
+        <td>555-8745</td>
+      </tr>
+      <tr>
+        <!-- <th>Phone</th> -->
+        <td>555-1234</td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>정규식</h1>
+    <script>
+      // abc라는 패턴이 제시한 문자열에 들어있니?
+      document.write(/abc/.test("abcde"), "<br>");
+      // 영어 소문자가 문자열에 들어있는지
+      document.write(/[a-z]/.test("asdvaw"), "<br>");
+      document.write(/[a-z]/.test("홍길동"), "<br>");
+      // 영어 대솜누자가 문자열에 들어있는지
+      document.write(/[A-Za-z]/.test("A"), "<br>");
+      // 한글이 들어있는지
+      document.write(/[가-힣]/.test("홍길동"), "<br>");
+
+      document.write("<p>축약형</p>");
+      // 축약형 패턴
+      // \w(대소문자,숫자,언더바), \W(\w이외 모든 것)
+      document.write("\\w, \\W 사용법", "<br>");
+      document.write(/\w/.test("1519"), "<br>");
+      document.write(/\w/.test("aswdvaewdv"), "<br>");
+      document.write(/\w/.test("QWEFQW"), "<br>");
+      document.write(/\w/.test("___"), "<br>");
+      document.write("<br>");
+      document.write(/\W/.test("!@#$!@#%"), "<br>");
+      document.write(/\W/.test("하이"), "<br>");
+      document.write("<br>");
+      // \s(공백인 것들), /S(공백이 아닌 것들)
+      document.write("\\s, \\S 사용법", "<br>");
+      document.write(/\s/.test("    advas"), "<br>");
+      document.write(/\s/.test(" "), "<br>");
+      document.write(/\S/.test("12341234"), "<br>");
+      document.write("<br>");
+      document.write(/\S/.test("\t"), "<br>");
+      document.write(/\S/.test("!@#$!@#$"), "<br>");
+      document.write("<br>");
+      // \d(숫자), \D(숫자가 아닌 것들)
+      document.write("\\d, \\D 사용법", "<br>");
+      document.write(/\d/.test("홍길동"), "<br>");
+      document.write(/\d/.test("1234"), "<br>");
+      document.write(/\d/.test("123asdf4"), "<br>");
+      document.write("<br>");
+      document.write(/\D/.test("1234"), "<br>");
+      document.write(/\D/.test("1234"), "<br>");
+      document.write(/\D/.test("123asdf4"), "<br>");
+      document.write("<br>");
+      //^(~로 시작하는), $(~로 끝나는)
+      // a로 끝나냐, b로 끝나냐
+      document.write("^, $ 사용법", "<br>");
+      document.write(/^Hello$/.test("Hello"), "<br>");
+      document.write(/^Hello$/.test("hello"), "<br>");
+      document.write(/^Hello$/.test("Hola"), "<br>");
+      document.write("<br>");
+      // |(or)
+      document.write("| 사용법", "<br>");
+      document.write(/a|b/.test("Hello"), "<br>");
+      document.write(/a|b/.test("apple"), "<br>");
+      document.write(/[ab]/.test("apple"), "<br>"); // or 의미를 가짐
+      document.write(/(ab)/.test("apple"), "<br>"); // ab가 들어있나
+      document.write(/(a|b)/.test("apple"), "<br>"); // a or b
+      document.write("<br>");
+
+      // . (모든 문자와 매칭)
+      document.write(". 사용법", "<br>");
+      document.write(/./.test("Hello"), "<br>");
+      document.write(/./.test("1234"), "<br>");
+      document.write(/./.test("앙"), "<br>");
+      document.write(/./.test("$#@"), "<br>");
+      document.write("<br>");
+      // 대소문자가 들어오는데 3개는 있어야 함 => 숫자 개념의 패턴 필요
+      // + : (1~무한대), *(0~무한대), ?(0~1), {숫자}, {최소숫자,최대숫자}
+      document.write("숫자 패턴 사용법", "<br>");
+      document.write(/a+/.exec("aaaabbb"), "<br>"); // exec(), match() : 패턴과 일치하는 문자열 리턴
+      document.write(/a*/.exec("abab"), "<br>"); //
+      document.write(/a*/.exec("cccbbb"), "<br>"); //
+      document.write(/a*/.test("cccbbb"), "<br>"); //
+      document.write(/a?/.exec("aaaaacccbbb"), "<br>"); //
+      document.write(
+        /[els]/.exec("One ring to bring them all and in the darkness bind"),
+        "<br>"
+      ); //
+    </script>
+  </body>
+</html>

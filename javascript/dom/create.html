@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>DOM(document Object Model) Create</h1>
+    <script>
+      // 창이 로드가 되면
+      window.onload = function () {
+        // h1 요소 생성 / 텍스트 내용 추가
+        // <h1>Hello DOM</h1>
+
+        let header = document.createElement("h1");
+        let content = document.createTextNode("Hello DOM");
+
+        // h1 요소에 텍스트 노드 연결
+        header.appendChild(content);
+        // body 자식요소로 삽입
+        document.body.appendChild(header);
+
+        // div 생성
+        // <div>안녕하세요</div>
+        let newDiv = document.createElement("div");
+        let newContent = document.createTextNode("안녕하세요");
+        newDiv.appendChild(newContent);
+        // document.body.appendChild(newDiv);
+
+        // 이미 존재하는 h1 앞에 추가
+        const current = document.querySelector("h1");
+        document.body.insertBefore(newDiv, current);
+
+        // 동적으로 생성 두 번째 방법
+        let output = "<ul>";
+        output += "<li>JAVASCRIPT</li>";
+        output += "<li>jQuery</li>";
+        output += "<li>ajax</li>";
+        output += "</ul>";
+
+        document.body.innerHTML += output;
+        // innerText는 태그가 해석되지 않고 문자열로 들어간다.
+        // document.body.innerText += output;
+
+        // 이미지 삽입
+        // <img src='' alt=''>
+        let img = document.createElement("img");
+
+        // 속성 추가
+        // img.setAttribute("src", "../file/고양이.png");
+        // img.setAttribute("alt", "고양이");
+
+        img.src = "../file/고양이.png";
+        img.alt = "고양이";
+
+        document.body.appendChild(img);
+      };
+    </script>
+  </body>
+</html>

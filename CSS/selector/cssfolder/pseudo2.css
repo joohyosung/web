@@ -1,0 +1,12 @@
+input {
+  width: 150px;
+  outline: none;
+  border: 1px solid lightblue;
+  padding: 5px 10px; /* 5px : 상 하, 10px : 좌 우 */
+  transition: 0.4s;
+}
+/* :focus => 웹 요소에 포커스가 들어왔을 때 스타일 적용 */
+input:focus {
+  width: 200px;
+  border-color: red;
+}

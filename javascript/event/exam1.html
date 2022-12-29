@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="ex">여기가 div로 선언되었습니다.</div>
+    <p><a href="#" id="display">div 요소 내용 출력하기</a></p>
+    <p><a href="#" id="revalue">div 요소 내용 변경하기</a></p>
+    <div>
+      <img src="../file/고양이.png" alt="" width="150px" height="100px" /><br />
+      <input type="button" value="PUSH" />
+    </div>
+    <div>
+      <input id="turn-on" type="button" value="turn on" />
+      <img id="light" src="../file/pic_bulboff.gif" alt="" />
+      <input id="turn-off" type="button" value="turn off" />
+    </div>
+    <script>
+      // 첫 번째 p 클릭 : div 내용 alert으로 출력
+      let alertText = () => {
+        const a1 = document.querySelector("#ex");
+        alert(a1.innerHTML);
+      };
+      document.querySelector("#display").addEventListener("click", alertText);
+
+      // 두 번째 p 클릭 : div 내용 변경하기(내용이 변경되었습니다.)
+      let modifyText = () => {
+        const a2 = document.querySelector("#ex");
+        if (a2.innerText == "여기가 div로 선언되었습니다.") {
+          a2.innerText = "내용이 변경되었습니다.";
+        } else {
+          a2.innerText = "여기가 div로 선언되었습니다.";
+        }
+      };
+      document.querySelector("#revalue").addEventListener("click", modifyText);
+
+      // 버튼 클릭 시 이미지 변경
+      let modifyImg = () => {
+        const img1 = document.querySelector("img");
+        img1.src = "../file/강아지.png";
+      };
+      document.querySelector("input").addEventListener("click", modifyImg);
+
+      // turn-on, turn-off 클릭 시 이미지 변경
+      let onLight = () => {
+        const img2 = document.querySelector("#light");
+        img2.src = "../file/pic_bulbon.gif";
+      };
+      document.querySelector("#turn-on").addEventListener("click", onLight);
+
+      let offLight = () => {
+        const img2 = document.querySelector("#light");
+        img2.src = "../file/pic_bulboff.gif";
+      };
+      document.querySelector("#turn-off").addEventListener("click", offLight);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <input type="text" name="tel" id="tel" />
+      <input type="button" value="전송" />
+      <p class="result">전화번호를 확인해 주세요.</p>
+    </div>
+    <div>
+      <input type="text" name="name" id="name" />
+
+      <p class="result">이름을 확인해 주세요.</p>
+    </div>
+    <script>
+      // 사용자가 전화번호를 입력 후 전송 버튼을 누르면 입력값 검증하기
+      // 입력값이 비어있는지?
+      // 비어있지 않다면 000-0000-0000의 형태로 입력되었는지?
+      document
+        .querySelector("[type='button']")
+        .addEventListener("click", () => {
+          const tel = document.querySelector("#tel");
+
+          if (/\d{3}-\d{4}-\d{4}/.test(tel.value) != true) {
+            alert("전화번호를 확인해 주세요.");
+            //show 클래스명 부착
+            document.querySelector(".result").classList.add("show");
+            tel.select();
+          }
+        });
+      document.querySelector("#name").addEventListener("change", (e) => {
+        // 이름으로 입력된 부분이 한글로 들어왔는지 확인
+        // 최소 2자리 ~ 최대 5자리
+        if (/[가-힣]{2,5}/) {
+          e.target.nextElementSiboling.classList.add("show");
+          e.target.select();
+        } else {
+          e.target.nextElementSiboling.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+</html>

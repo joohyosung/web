@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        background-color: #ddd;
+        /* height: 50px; */
+        overflow: hidden;
+      }
+      .left {
+        float: left;
+      }
+      .right {
+        float: right;
+      }
+      .clearfix {
+        clear: both; /* float 지정 해제 */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        float 해결 하는 방법
+        1) 부모 요소에 overflow: hidden 추가(부모의 height가 지정되지 않았다면 자식의 높이를 계산하새 포함)
+        => float를 적용하지 않을 다른 자식들이 있다면 그 부분은 추가로 처리가 필요
+
+        2)  .clearfix::after {
+            content: "";
+            clear: both;
+            display: block;
+      }
+     -->
+    <div class="box">
+      <img src="../img/left-arrow.png" alt="왼쪽화살표" class="left" />
+      <img src="../img/right-arrow.png" alt="오른쪽쪽화살표" class="right" />
+      <p class="clearfix">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos,
+        <!-- similique excepturi! Quam impedit nam sunt totam quibusdam unde veniam?
+        Impedit assumenda maiores repellendus quo est adipisci, molestiae ipsum
+        qui dicta eaque itaque nostrum nemo iusto aspernatur at. Amet velit
+        facere sapiente error, minima libero voluptatum tempore suscipit
+        consectetur aut impedit, ratione blanditiis asperiores autem! Dicta
+        reprehenderit, magnam necessitatibus maxime ad facilis et debitis
+        repellat accusamus beatae inventore eaque vero ipsa sapiente natus sint
+        odit! Incidunt, nulla odio earum quae distinctio dignissimos. Distinctio
+        dolore culpa pariatur id itaque et rem voluptatem minus maxime sed.
+        Odit, minima hic perferendis vel nemo modi! -->
+      </p>
+    </div>
+  </body>
+</html>

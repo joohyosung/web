@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container li {
+        float: left;
+        background-color: lightblue;
+        height: 50px;
+        list-style-type: none;
+        width: 25%;
+      }
+      .container::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>메뉴1</li>
+      <li>메뉴2</li>
+      <li>메뉴3</li>
+      <li>메뉴4</li>
+    </ul>
+    <div id="result"></div>
+    <!-- jquery 라이브러리 포함 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // 페이지의 새로고침이 없이 코드 실행
+      // 메뉴4를 클릭하면 서버에게 요청 보내기
+      // ./data/version.json 가져오기
+      $(".container li:last-child").on("click", () => {
+        $.getJSON({
+          url: "./data/version.json",
+          success: function (result) {
+            let data = "<ul><li>버전 : " + result.version + "</li>";
+            data += "<li>코드명 : " + result.codename + "</li>";
+
+            $("#result").html(data);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

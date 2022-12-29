@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header" onclick="change()">Header 1</h1>
+    <script>
+      let change = () => {
+        // h1 요소 스타일 지정
+        let h1 = document.getElementById("header");
+        // color, border, padding, font-size
+        h1.style.color = "blue";
+        h1.style.border = "1px solid red";
+        h1.style.padding = "10px";
+        h1.style.fontSize = "40px"; // font-size(css)
+      };
+    </script>
+  </body>
+</html>

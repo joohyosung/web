@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <label for="">이름</label>
+      <input type="text" name="word" id="word" />
+    </div>
+    <p>입력 필드를 벗어나면 소문자로 변경됩니다.</p>
+    <script>
+      // blur : input 내용이 수정이 되던지 안 되던지 포커스만 빠지면 무조건 일어나는 이벤트
+      // change : input 내용의 변경이 일어나고 포커스가 빠지면 이벤트 발생 (예시 : ID 중복 여부)
+      // input : input 내용이 변경이 일어날 때마다 이벤트 발생 (예시 : 입력할 때마다 ID 중복 여부)
+      //   document
+      //     .querySelector("#word")
+      //     .addEventListener("blur", () => alert("포커스 벗어남"));
+      //   document
+      //     .querySelector("#word")
+      //     .addEventListener("change", () => alert("포커스 벗어남"));
+      //   document
+      //     .querySelector("#word")
+      //     .addEventListener("input", () => alert("포커스 벗어남"));
+
+      document
+        .querySelector("#word")
+        .addEventListener(
+          "change",
+          (e) => (e.target.value = e.target.value.toLowerCase())
+        );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let a, b, c, d, e, f;
+      console.log("a타입", typeof a); //a 타입 undefined
+
+      (a = 4),
+        (b = "안녕하세요"),
+        (c = 3.141592),
+        (d = new Date()),
+        (e = { name: "hong", age: 20 }),
+        (f = null);
+
+      let g = true;
+
+      // number : 정수, 실수
+      // string : 문자열(문자 표현시 홑따옴표, 쌍따옴표)
+      // object : 클래스로 정의된 객체, {}, null
+      // boolean : true, false
+      console.log("a타입", typeof a); //a타입 number
+      console.log("b타입", typeof b); //b타입 string
+      console.log("c타입", typeof c); //c타입 number
+      console.log("d타입", typeof d); //d타입 object
+      console.log("e타입", typeof e); //e타입 object
+      console.log("f타입", typeof f); //f타입 object
+      console.log("g타입", typeof g); //g타입 boolean
+    </script>
+  </body>
+</html>

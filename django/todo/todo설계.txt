@@ -1,0 +1,14 @@
+Todo 설계안
+
+목록                http://127.0.0.1:8000/todo/
+새로운 todo 등록    http://127.0.0.1:8000/todo/new
+todo 수정           http://127.0.0.1:8000/todo/1/edit
+완료 목록           http://127.0.0.1:8000/todo/done
+todo 상세보기       http://127.0.0.1:8000/todo/1
+todo 완료           http://127.0.0.1:8000/todo/1/done
+=> 모델 정의
+title (제목)           단문으로 기록
+description (상세내용)  장문
+created (작성날짜)      날짜/시간
+complete (완료여부)     True/False
+important (중요여부)    True/False

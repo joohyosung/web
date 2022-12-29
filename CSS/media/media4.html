@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 전체: box-sizing */
+      * {
+        box-sizing: border-box;
+      }
+      /* body: 배경색(#ecf0f1 */
+      body {
+        background-color: #ecf0f1;
+      }
+      /* wrapper: max-width(60rem), width(100%), margin(상하2em, 좌우auto) */
+      .wrapper {
+        max-width: 60rem;
+        width: 100%;
+        margin: 2em, auto;
+      }
+      .flexbg {
+        display: flex; /* 수평 배치 */
+      }
+      .flexbg main {
+        order: 2;
+        background-color: white;
+        padding: 25px;
+      }
+      .flexbg .sidebar {
+        width: 20%;
+        padding: 25px;
+      }
+      .flexbg .left {
+        order: 1;
+        background-color: #3498bd;
+        text-align: center;
+      }
+      .flexbg .right {
+        order: 3;
+        background-color: #34495e;
+        text-align: center;
+      }
+      @media screen and (max-width: 768px) {
+        .flexbg {
+          flex-wrap: wrap;
+        }
+        .flexbg .sidebar {
+          width: 50%;
+        }
+        .flexbg .left {
+          order: 2;
+        }
+        @media screen and (max-width: 480px) {
+          .flexbg .sidebar {
+            width: 100%;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper flexbg">
+      <main>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+          accusantium ex sed ipsa placeat vitae inventore omnis odio temporibus
+          officiis in numquam ipsam, id sint reprehenderit esse consequatur
+          voluptas! Provident.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique
+          repellat maiores voluptatum magni amet necessitatibus, doloremque
+          tempore aliquid iusto placeat voluptatibus ad eum deleniti blanditiis
+          facilis atque nostrum unde, beatae sapiente, officia sed asperiores!
+          Doloremque nam quis eum maiores quo excepturi hic eveniet vero, optio
+          delectus magnam inventore animi quaerat cumque. Dolorem, est deserunt
+          reprehenderit similique minus ut libero soluta sapiente ullam laborum
+          illum repudiandae veritatis illo obcaecati, alias, eum saepe nulla
+          deleniti dicta inventore enim fugit! Corrupti, inventore! Rerum.
+        </p>
+      </main>
+      <aside class="sidebar left">
+        <p>왼쪽 서브 메뉴</p>
+      </aside>
+      <aside class="sidebar right">
+        <p>오른쪽 서브 메뉴</p>
+      </aside>
+    </div>
+  </body>
+</html>

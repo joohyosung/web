@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grand-parent {
+        width: 800px;
+        height: 500px;
+        border: 2px dashed lightgray;
+      }
+      .parent {
+        width: 500px;
+        height: 400px;
+        border: 2px dashed gray;
+      }
+      .child {
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+        font-size: 30px;
+        border: 1px solid black;
+      }
+      .fixed {
+        position: fixed;
+        right: 100px;
+        bottom: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        position : 요소의 위치 지정 방식 결정
+        position : static; 기본상태
+        position : fixed; 브라우저(뷰포트)를 기준으로 배치
+     -->
+    <div class="grand-parent">
+      <div class="parent">
+        <div class="child">1</div>
+        <div class="child fixed">2</div>
+        <div class="child">3</div>
+      </div>
+    </div>
+  </body>
+</html>

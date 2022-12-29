@@ -1,0 +1,7 @@
+input:disabled {
+  background-color: #ddd;
+  border: 1px solid #ccc;
+}
+input:checked + span {
+  color: red;
+}

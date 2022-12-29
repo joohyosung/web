@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p1">this is a paragraph</p>
+    <input type="button" value="PUSH" />
+    <input type="button" value="요소 숨기기" />
+    <input type="button" value="요소 보이기" />
+
+    <script>
+      // 버튼 클릭 시 p 태그 스타일 변경하기
+      // 폰트, 색상, 기울임꼴
+      let modifyText = () => {
+        const pp = document.querySelector("#p1");
+        pp.style.fontFamily = "궁서";
+        pp.style.color = "red";
+        pp.style.fontStyle = "italic";
+      };
+      document
+        .querySelector("input:nth-child(2)")
+        .addEventListener("click", modifyText);
+
+      // 요소 숨기기 버튼 클릭 시 p 태그 숨기기
+      let unvisible = () => {
+        const pp = document.querySelector("#p1");
+        pp.style.visibility = "hidden";
+      };
+      document
+        .querySelector("input:nth-child(3)")
+        .addEventListener("click", unvisible);
+      // 요소 보이기 버튼 클릭 시 p 태그 보이기
+      let visible = () => {
+        const pp = document.querySelector("#p1");
+        pp.style.visibility = "visible";
+      };
+      document
+        .querySelector("input:nth-child(4)")
+        .addEventListener("click", visible);
+    </script>
+  </body>
+</html>

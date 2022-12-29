@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 전역 속성 : name, data-*, id, class ... + 이벤트 핸들러(권장X) -->
+    <!-- onclick : button 요소가 클릭이 되면 -->
+    <button type="button" onclick="showDialog()">눌러주세요</button>
+    <button type="button" onclick="showDialog2('Hello', 'Hong')">인사1</button>
+    <button type="button" onclick="showDialog3('Hello', 'Hong')">인사2</button>
+    <script>
+      // function(함수) == def 함수
+      // 반복작업 => 필요할 때마다 호출
+      // function 함수명(){return(선택)}
+      function showDialog() {
+        alert("안녕하세요");
+      }
+
+      function showDialog2(greeting, name) {
+        alert(greeting + "! " + name);
+      }
+
+      function showDialog3(greeting, name) {
+        // alert(greeting + "! " + name);
+        // 탐플릿 문자열
+        alert(`${greeting}! ${name}`);
+      }
+
+      // 호출-함수가 필요한 곳에서 함수이름();
+      //      다른 함수, html 요소
+
+      // 숫자 2개를 입력받아 연산(+)
+      // 결과값을 리턴 or 출력
+      function add(num1, num2) {
+        return num1 + num2;
+      }
+
+      // 함수호출 : return이 있다면?
+      // 1)return값 변수에 담기
+      // 2)return값 출력
+      document.write(add(5, 5) + "<br>");
+
+      function test(a, b, c, d) {
+        // 매개변수의 개수가 맞지 않는 경우(맞는다고 할 때라도) 기본값 부여
+        c = c || 52; // c가 값이 할당되면 c를 쓰고 할당 되지 않았다면 52 할당
+        d = d || 123; // d가 값이 할당되면 d를 쓰고 할당 되지 않았다면 123 할당
+        console.log(a, b, c, d);
+      }
+
+      test(1, 2);
+
+      //   함수 표현식
+      //   const result2 = function () {
+      //     alert("반갑습니다");
+      //   };
+      const result2 = () => {
+        alert("반갑습니다");
+      };
+
+      // 호출
+      //   result2();
+
+      const test2 = function (a, b, c, d) {
+        c = c || 52;
+        d = d || 123;
+        console.log(a, b, c, d);
+      };
+
+      test2(11, 12, 13, 14);
+
+      // 두 개의 숫자를 받아서 곱셈의 결과를 리턴하는 함수
+      const multipl = (num1, num2) => {
+        return num1 * num2;
+      };
+      document.write(multipl(2, 3));
+
+      //   3의 배수 찾는 함수
+      // 사용자가 넘긴 숫자가 3의 배수라면 '3의 배수' 문자열 출력
+      // 아닌 경우 '3의 배수 아님 출력'
+
+      const mul3 = (num) => {
+        if (num % 3 == 0) {
+          alert("3의 배수");
+        } else {
+          alert("3의 배수 아님");
+        }
+      };
+
+      //   mul3(prompt("숫자를 입력하시오"));
+
+      // 3의 배수 : '박수' 문자열 출력, 9의 배수라면 '박수x2' 출력
+      const m39 = (num) => {
+        if (num % 9 == 0) {
+          alert("박수x2");
+        } else if (num % 3 == 0) {
+          alert("박수");
+        } else {
+          alert("노박수");
+        }
+      };
+      //   m39(prompt("숫자를 입력하시오"));
+
+      // 국어 영어 시험 점수를 받아서 합격 여부를 알려주는 함수
+      // 과목마다 100점 만점인데, 두 과목 합해서 120점 이상이면 합격
+      // 한 과목이 40점 미만이라면 과락으로 불합격
+      const pass = (ko, en) => {
+        let sum = ko + en;
+        if (ko >= 40 && en >= 40 && sum >= 120) {
+          alert("합격");
+        } else {
+          alert("불합격");
+        }
+      };
+      pass(parseInt(prompt("국어점수")), parseInt(prompt("영어점수")));
+    </script>
+  </body>
+</html>

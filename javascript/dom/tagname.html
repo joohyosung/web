@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header">Header</h1>
+    <ul>
+      <li>List Item 1</li>
+      <li>List Item 2</li>
+      <li>List Item 3</li>
+      <li>List Item 4</li>
+      <li>List Item 5</li>
+    </ul>
+    <script>
+      // li 가져오기
+      const lis = document.getElementsByTagName("li");
+      console.log(lis);
+      console.log(lis[0]);
+      console.log(lis[0].innerHTML);
+      console.log(lis[2].innerHTML);
+
+      // getElement~ : id, tagname, naem, classname
+      // querySelector('선택자 전부 가능') => 가장 처음 요소
+      // querySelectorAll('선택자 전부 가능') => 모든 요소
+      console.log("");
+      const lis2 = document.querySelector("li");
+      console.log(lis2);
+
+      console.log("");
+      const lis3 = document.querySelectorAll("li");
+      console.log(lis3);
+      console.log(lis3[0]);
+
+      // h1 찾아오기
+      console.log(document.querySelector("#header"));
+    </script>
+  </body>
+</html>

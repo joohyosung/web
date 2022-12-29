@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 조건문 : if ~ else if ~ else
+      // if(true), else if(true)
+      // true 인식 : [], {}, '문자', 0 제외
+      // false 인식 : 0,'', null, undefined, NaN(not a number)
+
+      // 오전 오후 판별
+
+      // 현재 날짜, 시간 알아내기 - new Date()
+      // 변수 선언 = new 객체명()
+
+      //   var date = new Date();
+      //   console.log("date", date); // Fri Dec 16 2022 16:22:56 GMT+0900 (한국 표준시)
+      //   // 시간 가져오기
+      //   var hour = date.getHours();
+      //   console.log("hour", hour);
+
+      //   if (hour < 12) {
+      //     console.log("오전");
+      //   } else {
+      //     console.log("오후");
+      //   }
+
+      //   // 사용자에게 숫자를 입력받아 양수, 0, 음수를 구분하는 프로그램
+      //   // 입력값들은 기본적으로 string
+      //   let num = prompt("숫자를 입력해 주세요", "숫자");
+      //   console.log(num);
+      //   console.log(typeof num);
+
+      //   if (num > 0) {
+      //     alert("양수");
+      //   } else if (num == 0) {
+      //     alert("0");
+      //   } else {
+      //     alert("음수");
+      //   }
+
+      // 숫자를 입력 받아 짝수, 홀수 구별
+      // let num = prompt("숫자를 입력하세요");
+      // if (num % 2 == 0) {
+      //   5;
+      //   alert("짝");
+      // } else {
+      //   alert("홀");
+      // }
+
+      // 사용자에게 국어, 영어, 수학 점수를 입력받아 평균을 구한 뒤
+      // A(90),B(80),C(70),D(60),F 성적 매기기
+      let kor = parseInt(prompt("국어 점수를 입력하시오."));
+      let eng = parseInt(prompt("영어 점수를 입력하시오."));
+      let math = parseInt(prompt("수학 점수를 입력하시오."));
+
+      let avg = (kor + eng + math) / 3;
+      if (avg >= 90) {
+        alert("A");
+      } else if (avg >= 80) {
+        alert("B");
+      } else if (avg >= 70) {
+        alert("C");
+      } else if (avg >= 60) {
+        alert("D");
+      } else {
+        alert("F");
+      }
+    </script>
+  </body>
+</html>

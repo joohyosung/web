@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <form action="" method="get">
+        <div class="mt-5 p-3 mb-2 bg-success text-dark">일별 박스 오피스</div>
+        <div class="row">
+          <div class="col-3">
+            <!--col은 자동적으로 12칸을 만든다. col-x x에 숫자-->
+            <input
+              type="text"
+              name="txtYear"
+              id="txtYear"
+              size="6"
+              class="form-control"
+            />
+          </div>
+          <div class="col-1 align-self-center">년</div>
+          <div class="col-3">
+            <select name="selMon" id="selMon" class="form-control">
+              <option value="01">1 월</option>
+              <option value="02">2 월</option>
+              <option value="03">3 월</option>
+              <option value="04">4 월</option>
+              <option value="05">5 월</option>
+              <option value="06">6 월</option>
+              <option value="07">7 월</option>
+              <option value="08">8 월</option>
+              <option value="09">9 월</option>
+              <option value="10">10 월</option>
+              <option value="11">11 월</option>
+              <option value="12">12 월</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <select name="selDay" id="selDay" class="form-control">
+              <option value="01">1 일</option>
+              <option value="02">2 일</option>
+              <option value="03">3 일</option>
+              <option value="04">4 일</option>
+              <option value="05">5 일</option>
+              <option value="06">6 일</option>
+              <option value="07">7 일</option>
+              <option value="08">8 일</option>
+              <option value="09">9 일</option>
+              <option value="10">10 일</option>
+              <option value="11">11 일</option>
+              <option value="12">12 일</option>
+              <option value="13">13 일</option>
+              <option value="14">14 일</option>
+              <option value="15">15 일</option>
+              <option value="16">16 일</option>
+              <option value="17">17 일</option>
+              <option value="18">18 일</option>
+              <option value="19">19 일</option>
+              <option value="20">20 일</option>
+              <option value="21">21 일</option>
+              <option value="22">22 일</option>
+              <option value="23">23 일</option>
+              <option value="24">24 일</option>
+              <option value="25">25 일</option>
+              <option value="26">26 일</option>
+              <option value="27">27 일</option>
+              <option value="28">28 일</option>
+              <option value="29">29 일</option>
+              <option value="30">30 일</option>
+              <option value="31">31 일</option>
+            </select>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-danger w-100">조회</button>
+          </div>
+        </div>
+        <!-- 사용자가 조회한 날짜의 영화 순위 보여주기 -->
+        <div class="box2 mt-5"></div>
+        <!-- 사용자가 조회한 영화 상세정보 -->
+        <div class="box3 mt-5"></div>
+      </form>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+    <!-- jquery 라이브러리 포함 -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const txtYear = $("#txtYear");
+      const selMon = $("#selMon");
+      const selDay = $("#selDay");
+      // 어제 날짜의 박스 오피스 순위를 보여주기
+      // 어제 날짜 구하기
+      function init() {
+        // 오늘날짜 new Date() / 년,월,일 추출 / 일 - 1
+        let today = new Date();
+        console.log(today);
+
+        let year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate() - 1;
+
+        console.log(year, month, day);
+
+        // 날짜 값을 화면에 보여주기
+        txtYear.val(year);
+
+        // month 1-9의 경우는 두자리로 value 했기 때문에 제대로 보여줄 수 없음
+        // 1-9인 경우는 01,02...
+        if (month < 10) {
+          month = "0" + month;
+        }
+        selMon.val(month);
+
+        // day 1-9
+        selDay.val(day) < 10 ? "0" + day : day;
+      }
+
+      window.onload = function () {
+        // 버튼을 클릭하면 아래 작업 실행
+
+        $(".btn").on("click", () => {
+          let url1 =
+            "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=";
+          url1 += txtYear.val() + selMon.val() + selDay.val();
+
+          $.getJSON({
+            url: url1,
+            success: function (movies) {
+              // 순위(rank), 증감(rankInten), 영화명(movieNm)
+              // 영화개봉일(openDt), 당일관객 수(audiCnt), 누적관객 수(audiAcc)
+              const dailyBoxOfficeList =
+                movies.boxOfficeResult.dailyBoxOfficeList;
+              let rankInten = "";
+              let table = "<table class = table>";
+              table += "<thead>";
+              table += "<tr>";
+              table += "<th>순위</th>";
+              table += "<th>증감</th>";
+              table += "<th>영화명</th>";
+              table += "<th>영화개봉일</th>";
+              table += "<th>당일관객수</th>";
+              table += "<th>누적관객수</th>";
+              table += "</tr></thead>";
+              table += "<tbody>";
+              // dailyBoxOfficeList 내용이 없으면 return
+              if (dailyBoxOfficeList.length == 0) {
+                return;
+              }
+              // dailyBoxOfficeList 내용이 있으면 , 원하는 정보 추출
+              $(dailyBoxOfficeList).each((idx, movie) => {
+                if (parseInt(movie.rankInten) > 0) {
+                  rankInten = "▲" + movie.rankInten;
+                } else if (parseInt(movie.rankInten) < 0) {
+                  rankInten = "▼" + Math.abs(parseInt(movie.rankInten));
+                } else {
+                  rankInten = "-";
+                }
+                table += "<tr>";
+                table += "<td>" + movie.rank + " 위" + "</td>";
+                table += "<td>" + "(" + rankInten + ")" + "</td>";
+                table +=
+                  "<td><a href='#' class='nav-link' data-moviecd='" +
+                  movie.movieCd +
+                  "'>" +
+                  movie.movieNm +
+                  "</a></td>";
+                table += "<td>" + movie.openDt + "</td>";
+                table += "<td>" + movie.audiCnt + "</td>";
+                table += "<td>" + movie.audiAcc + "</td>";
+                table += "</tr>";
+              });
+
+              table += "</tbody></table>";
+              $(".box2").html(table);
+            },
+          });
+        });
+      };
+
+      // 제목 클릭 시 data-에 들어있는 값 가져오기
+      // 이벤트버블링 : 자식 태그에 일어난 이벤트가 부모한테 전달
+      $(".box2").on("click", (e) => {
+        console.log(e.target.dataset.moviecd);
+
+        let movieCd = e.target.dataset.moviecd;
+
+        let url2 =
+          "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=";
+        url2 += movieCd;
+        $.getJSON({
+          url: url2,
+          success: function (result) {
+            // 영화 상세정보 보여주기
+            console.log(result.movieInfoResult.movieInfo);
+            const movieInfo = result.movieInfoResult.movieInfo;
+
+            // 영화제목(movieNm), 영어제목(movieNmEn), 상영시간(showTm), 감독(directors), 출연배우(actors)
+            console.log("영화제목 : ", movieInfo.movieNm);
+            console.log("영어제목 : ", movieInfo.movieNmEn);
+            console.log("상영시간 : ", movieInfo.showTm);
+            console.log("감독 : ", movieInfo.directors);
+            console.log("출연배우 : ", movieInfo.actors);
+
+            let output = "<ul>";
+            output += "<li>영화제목 : " + movieInfo.movieNm + "</li>";
+            output += "<li>영어제목 : " + movieInfo.movieNmEn + "</li>";
+            output += "<li>상영시간 : " + movieInfo.showTm + " 분</li>";
+            output += "<li>감독 : " + movieInfo.directors[0].peopleNm + "</li>";
+            // 출연배우 몇 명인지 알아내기
+            let length = movieInfo.actors.length;
+            let actorsNm = "";
+            $(movieInfo.actors).each((idx, actor) => {
+              if (idx == length - 1) {
+                actorsNm += actor.peopleNm;
+              } else {
+                actorsNm += actor.peopleNm + ", ";
+              }
+            });
+
+            output += "<li>출연배우 : " + actorsNm + "</li>";
+            output += "</ul>";
+            $(".box3").html(output);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

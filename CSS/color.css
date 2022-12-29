@@ -1,0 +1,11 @@
+/* 
+    선택자{
+        key : value
+    }
+
+    선택자를 사용하는 다양한 방식이 존재함
+    key, value 정해져 있음
+*/
+h3 {
+  background-color: darkviolet;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 
+        테두리(2px 실선 색상선택), 너비(800), 높이(300), div 가운데 배치
+        안쪽여백(10) 
+        */
+      .slide {
+        border: 2px solid red;
+        width: 800px;
+        height: 300px;
+        margin: 0 auto;
+        padding: 10px;
+
+        position: relative;
+      }
+      /* 이미지 옆에 글자가 위치 */
+      .slide img {
+        float: left;
+      }
+
+      /* 배경색(#333), 줄높이(50), 글자색(흰색), 가운데정렬 */
+      .controls a {
+        background-color: #333;
+        line-height: 50px;
+        color: white;
+        text-align: center;
+
+        display: block;
+        position: absolute;
+        top: calc(50% - 25px);
+        white-space: nowrap; /* 공백을 기준으로 엔터 넣지마라 */
+      }
+
+      .prev {
+        right: 100%;
+      }
+
+      .next {
+        left: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <img
+        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/485050/restaurant_title.jpg"
+        alt="음식"
+      />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod excepturi
+        corrupti, laboriosam nam dolor eius alias tempora, quibusdam quas
+        consequatur amet sed qui rerum obcaecati. Hic esse omnis nesciunt
+        aperiam.
+      </p>
+      <div class="controls">
+        <a href="#" class="prev">Previous Project</a>
+        <a href="#" class="next">Next Project</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .callout {
+        border: 1px solid #ff0080;
+        margin: 2px 4px;
+        padding: 2px 6px;
+      }
+      .code {
+        background-color: #ccc;
+        margin: 1px 2px;
+        padding: 1px 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Simple HTML</h1>
+    </header>
+    <div id="content">
+      <p>this is a <i>simple</i> HTML file</p>
+    </div>
+    <div id="callout">
+      <p>Thisi as Fancy as we'll get!</p>
+    </div>
+    <p>IDs (such as <span class="code">#content</span>) are unique</p>
+    <p>
+      Classes (such as <span class="code">.calout</span>) can be used on many
+      elements
+    </p>
+    <div id="callout2" class="callout fancy">
+      <p>A single HTML elements can have multiple classes</p>
+    </div>
+    <script>
+      // content 영역 첫번째 자식으로 새로운 요소 추가 : <p>I was created dynamically</p>
+      // content 영역 마지막 자식으로 새로운 요소 추가 : <p>I was also created dynamically</p>
+      let p1 = document.createElement("p");
+      let p2 = document.createElement("p");
+      p1.innerText = "I was created dynamically";
+      p2.innerText = "I was also created dynamically";
+
+      console.log(p1);
+      console.log(p2);
+
+      // content 영역 찾기
+      let content = document.querySelector("#content");
+
+      // 위치
+      // let current = document.querySelector("#content>p");
+      let current = content.firstElementChild;
+      // 첫번째 자식으로 추가
+      content.insertBefore(p1, current);
+      // 마지막 자식 추가
+      content.appendChild(p2);
+    </script>
+  </body>
+</html>

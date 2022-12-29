@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="p1">this is a paragraph</p>
+    <input type="button" value="PUSH" />
+    <input type="button" value="요소 숨기기" />
+    <input type="button" value="요소 보이기" />
+
+    <script>
+      // 버튼 클릭 시 p 태그 스타일 변경하기
+      // 폰트, 색상, 기울임꼴
+
+      // 요소 숨기기 버튼 클릭 시 p 태그 숨기기
+
+      // 요소 보이기 버튼 클릭 시 p 태그 보이기
+
+      const p1 = document.querySelector("#p1");
+
+      document.querySelectorAll("input").forEach(function (button, idx) {
+        // console.log(idx, ": ", item);
+        button.addEventListener("click", (e) => {
+          console.log(e.target);
+          if (idx == 0) {
+            p1.style.fontFamily = "궁서";
+            p1.style.color = "red";
+            p1.style.fontStyle = "italic";
+          } else if (idx == 1) {
+            p1.style.visibility = "hidden";
+          } else {
+            p1.style.visibility = "visible";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

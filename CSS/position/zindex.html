@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box-group {
+        position: relative;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+        position: absolute;
+      }
+      .box1 {
+        background-color: red;
+        left: 50px;
+        top: 50px;
+        z-index: 1;
+      }
+
+      .box2 {
+        background-color: yellow;
+        left: 110px;
+        top: 70px;
+        z-index: 2;
+      }
+
+      .box3 {
+        background-color: blue;
+        left: 70px;
+        top: 110px;
+        z-index: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        zindex : 요소가 쌓여 있는 순서에서 특정 요소에 우선순위를 부여할 때 사용
+        1. static을 제외한 position 속성의 값이 있을 경우 가장 위에 쌓임(값 무관)
+        2. position이 모두 존재한다면 z-index 속성의 숫자 같이 높을수록 위에 쌓임
+        3. position 속성의 값이 있고, z-index 속성의 숫자 값이 같다면 나중에 
+           쓰여진 HTML코드일수록 위에 쌓임
+     -->
+    <div class="box-group">
+      <div class="box box1">1</div>
+      <div class="box box2">2</div>
+      <div class="box box3">3</div>
+    </div>
+  </body>
+</html>

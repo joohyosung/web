@@ -1,0 +1,13 @@
+명령어
+shell 진입 : python manage.py shell
+1. 삽입
+1)p = Person(first_name='kim', last_name='young')
+  p.save()
+  Person.objects.create(first_name='kim', last_name='young')
+2. 조회
+*참고 : wkdrh cnrdir gkatn(get + exception) - get_object_or_404()
+1)전체조회
+  Person.objects.all()
+2)개별조회(아이디가 1번이거나, 이름이 홍길동....)
+  Person.objects.filter(id=1)
+  Person.objects.get(id=1) : 찾는 대상이 없으면 DoesNotExist 발생 가져올 대상이 하나만 매치되어야 한다.

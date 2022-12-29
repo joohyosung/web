@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block style %}
+  <style>
+    img {
+      width: 500px;
+      height: 319px;
+    }
+  </style>
+{% endblock style %}
+{% block contents %}
+  <!-- form 요소를 p태그로 만들기 : {{form.as_p}} -->
+  <!-- title 나올 부분 -->
+  <h1>{{photo.title}}</h1>
+  <div class="row py-3">
+    <div class="col">
+      <!-- <a href="/photo/{{photo.id}}/edit/" class="btn btn-success">Edit Photo</a> -->
+      <a href="{% url 'edit' pk=photo.pk %}" class="btn btn-success">Edit Photo</a>
+      <!-- id 값 넘겨주기 -->
+      <a href="{% url 'remove' pk=photo.pk %}" class="btn btn-danger">Delete Photo</a>
+      <a href="{% url 'home' %}" class="btn btn-info">List Photo</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col photo">
+      <!-- image 나올 부분 -->
+      <img src="{{photo.image}}" alt="{{photo.title}}"/>
+      <!-- description 나올 부분 -->
+      <p>{{photo.description}}</p>
+      <!-- price 나올 부분 -->
+      <p>{{photo.price}}원</p>
+    </div>
+  </div>
+{% endblock contents %}

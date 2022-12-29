@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header" onclick="change()">Header 1</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+      let change = () => {
+        // h1 요소 스타일 지정
+        let h1 = $("#header");
+        // color, border, padding, font-size
+        h1.css("color", "blue");
+        h1.css("border", "1px solid red");
+        h1.css("padding", "10px");
+        h1.css("fontSize", "40px"); // font-size(css)
+      };
+    </script>
+  </body>
+</html>

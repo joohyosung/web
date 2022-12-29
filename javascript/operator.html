@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 연산자 : 단항연산자(음수,양수), 산술연산자, 비교연산자, 연결연산자
+      let a = 4,
+        b = 5;
+
+      console.log("a + b =", a + b);
+      console.log("a - b =", a - b);
+      console.log("a * b =", a * b);
+      console.log("a / b =", a / b);
+      console.log("a % b =", a % b);
+      console.log("");
+      console.log("a == b =", a == b);
+      console.log("a != b =", a != b);
+      let c = "4";
+      // 4 == '4', 4 === '4'
+      // == 값만 비교
+      // === 값, 타입 비교
+      console.log("a === c =", a === c); // == or ===, != or !==
+      console.log("a == c =", a == c); // true
+      console.log("a !== c =", a !== c); // true
+      console.log("a != c =", a != c); // false
+      console.log("");
+      let d = "3";
+      // 문자열 + 문자열 : 연결
+      // numer + 문자열 : 연결
+      console.log("c + d =", c + d); // 43
+      console.log("a + d =", a + d); // 43
+      console.log("");
+      // 4 - '3'
+      console.log("a - d =", a - d); // 1
+      console.log("a * d =", a * d); // 12
+      console.log("a / d =", a / d); // 1.33333
+      console.log("a % d =", a % d); // 1
+
+      // &&(and), ||(or), !(not)
+      // 결과값 : true, false
+      console.log(4 > 3 && 5 > 4);
+      console.log(!(4 > 3) && 5 > 4);
+    </script>
+  </body>
+</html>

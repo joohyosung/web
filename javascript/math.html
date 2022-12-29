@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      <button onclick="dice()">주사위 게임</button>
+      <button onclick="lotto()">로또 번호 추첨</button>
+    </p>
+    <script>
+      // 수학 객체 : Math
+      // Math.메소드명()
+
+      document.write(Math.PI, "<br>");
+      document.write(Math.floor(3.141592), "<br>"); // 인수보다 작거나 같은 수 중에서 가장 큰 정수
+      document.write(Math.ceil(3.141592), "<br>"); // 인수보다 크거나 같은 수 중에서 가장 작은 정수
+      document.write(Math.abs(3.141592), "<br>"); // 절대값
+      document.write(Math.abs(-3.141592), "<br>"); //절대값
+      document.write(Math.max(5, 6, 8, 12, 1), "<br>"); // 최대값
+      document.write(Math.max([5, 6, 8, 12, 1]), "<br>"); // NaN
+      document.write(Math.min(5, 6, 8, 12, 1), "<br>"); // 최소값
+      document.write(Math.random(), "<br>"); // 0~1 사이의 임의의 수 반환
+      document.write(Math.random() * 10, "<br>"); // 0~9 사이의 임의의 수 반환
+      document.write(Math.random() * 11, "<br>"); // 0~10 사이의 임의의 수 반환
+      document.write(Math.floor(Math.random * 31) + 120, "<br>"); // 120~150 사이의 임의의 수 반환
+
+      //주사위 게임
+      //주사위 두 개를 던져서 나오는 숫자를 (첫번째 숫자, 두번째 숫자) 출력
+      //두 개의 합이 5가 아니면 계속 주사위를 던지기, 합이 5가 되면 주사위 던지기 종료
+
+      let dice = () => {
+        while (true) {
+          let num1 = Math.ceil(Math.random() * 6);
+          let num2 = Math.ceil(Math.random() * 6);
+
+          document.write("(", num1, ", ", num2, ")", "<br>");
+
+          if (num1 + num2 == 5) {
+            break;
+          }
+        }
+      };
+      let lotto = () => {
+        // new Set() : 중복되는 수가 없는 집합
+        const ranNum = new Set([]);
+        while (ranNum.size < 6) {
+          ranNum.add(Math.ceil(Math.random() * 45));
+        }
+        let value = [...ranNum];
+        document.write(value.sort());
+      };
+    </script>
+  </body>
+</html>

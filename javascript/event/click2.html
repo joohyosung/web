@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="target">
+    <form action="" method="get">
+      <div>
+        <input type="radio" name="color" id="blue" />파랑색
+        <input type="radio" name="color" id="green" />녹색
+      </div>
+    </form>
+    <script>
+      // 버튼 클릭될 때마다 body 배경색 변경
+
+      // function 작성
+      let changeColor = (color) => {
+        // 배경색 변경
+        document.querySelector("#target").style.background = color;
+      };
+
+      // 이벤트 대상
+      document.querySelector("#blue").addEventListener("click", function () {
+        changeColor("blue");
+      });
+      document.querySelector("#green").addEventListener("click", () => {
+        changeColor("green");
+      });
+    </script>
+  </body>
+</html>

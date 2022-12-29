@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table id="outside">
+      <tr>
+        <td id="t1">one</td>
+      </tr>
+      <tr>
+        <td id="t2">two</td>
+      </tr>
+    </table>
+    <script>
+      // 이벤트 : 클라이언트가 하는 모든 행위(마우스 클릭, 드래그, 버튼 클릭...)
+      // 이벤트 핸들러 : 이벤트가 발생했을 때 실행되는 코드, 전역속성(권장방식X)
+      // <h1 onclick=''></h1>
+
+      // onclick => 해당 요소와 연결?
+      function modifyText() {
+        // t2 텍스트 값이 three가 아니라면 three로 변경
+        // t2 텍스트 값이 three라면 two로 변경
+
+        // t2 찾기
+        const t2 = document.querySelector("#t2");
+
+        if (t2.innerText == "three") {
+          t2.innerText = "two";
+        } else {
+          t2.innerText = "three";
+        }
+
+        // if-else => 삼항연산자(조건 ? 참일 때 실행할 구문 : 거짓일 떄 실행할 구문)
+        // t2.innerText = t2.innerText == 'three' ? 'rwo' : 'three'
+      }
+      // two 요소를 클릭해서 들어있는 t2 텍스트 값이 three가 아니라면 three로 변경
+      //                            t2 텍스트 값이 three라면 two로 변경
+
+      // 이벤트 대상 찾기 => two 요소
+      let outside = document.querySelector("#outside");
+
+      // 이벤트리스너(요소에 이벤트가 일어나는지 감시) 부착
+      outside.addEventListener("click", modifyText);
+    </script>
+  </body>
+</html>

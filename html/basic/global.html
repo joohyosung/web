@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        Global Atrribute : 전역속성
+        HTML 모든 요소에 사용 가능한 속성
+        1) class : 특정 요소 하나 혹은 여러 요소한테 동일하게 값을 부여할 수 있음 => style sheet, script 사용
+        2) id : 특정 요소 하나에게 유니크한 값을 부여함(한 페이지 내에서 중복되면 안 됨) => style sheet, script 사용 
+        3) data-* : 커스텀 속성(data- 다음에 대문자는 안 됨, value는 string 형태임)
+        4) style : inline style 줄 때 사용
+        5) title : 부가 정보 나타낼 때 사용
+        6) tabindex : tab으로 지정할 수 있는 요소의 순서 지정
+        7) draggable : 문장을 드래그할 수 있도록 지정
+        8) hidden : 문장을 감출 때 사용
+
+        [참고]
+        name : form 요소 안에서 주로 사용 / 서버 쪽에서 사용자가 넘긴 값을 가져올 때 사용
+
+        <h1 class = 'header' id = 'header' name = 'header'></h1>
+     -->
+    <div class="section" id="section1">내용1</div>
+    <div class="section">내용2</div>
+    <div class="section" id="section3">내용3</div>
+    <h1 class="section">헤더</h1>
+    <img
+      src="../file/고양이.png"
+      alt="고양이"
+      id="img1"
+      style="width: 300; height: 300"
+    />
+    <ul>
+      <li data-animal-type="bird">Owl</li>
+      <li data-animal-type="fish">Salmon</li>
+      <li data-animal-type="spider">Tarantula</li>
+    </ul>
+    <p title="Free Web">w3schools.com</p>
+    <p draggable="true">w3schools.com</p>
+    <p hidden>w3schools.com</p>
+    <p>
+      <a href="https://www.naver.com" tabindex="2">naver.com</a>
+      <a href="https://www.daum.net" tabindex="1">daum.net</a>
+      <a href="https://www.google.com" tabindex="3">google.com</a>
+    </p>
+  </body>
+</html>

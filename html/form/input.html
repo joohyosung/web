@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+        form : 웹 서버에 정보를 제출하기 위한 양식 범위를 정의
+        method = 'get' : 서버로 전송할 http 방식(get(기본), host)
+        ex) https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=영화
+        method = 'post' : 사용자가 입력한 값이 주소줄에 보이지 않음(로그인, 회원가입)
+        ex) https://search.naver.com/search.naver
+
+        action='' : 전송한 정보를 처리할 웹페이지 URL(일반 html로는 처리 불가)
+                    백엔드 프로그램(php, java, python(django), node.js ...) 필요
+
+        form은 다른 form을 자식 요소로 포함할 수 없음
+    -->
+    <form action="" method="get">
+      <!-- 
+            input type='text' : enter 입력 시 form submit(action 주소로 전송)됨
+            http://127.0.0.1:5500/html/form/text01.html?username=그래
+         -->
+      <div>
+        <label for="">PIN</label>
+        <input
+          type="text"
+          name="pin"
+          id=""
+          size="4"
+          maxlength="3"
+          required
+          autofocus
+        />
+      </div>
+      <div>
+        <label for="username">이름</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="이름"
+          readonly
+          value="홍길동"
+          size="50"
+        />
+      </div>
+
+      <div>
+        <label for="password">비밀번호</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="비밀번호"
+          disabled
+        />
+      </div>
+
+      <div>
+        <!-- 
+            type = 'radio' : 여러 개 중에 하나만 선택할 때 
+
+            text01.html?username=admin&password=12345&gender=on
+
+            value 속성 필수
+            ?username=admin&password=12345&gender=남성
+
+        -->
+        <input type="radio" name="gender" id="male" value="남성" />
+        남성
+        <input type="radio" name="gender" id="female" value="여성" />
+        여성
+      </div>
+      <!-- 
+        type = 'checkbox' : 여러 개 중에 여러 개 선택할 때 
+
+        text01.html?username=admin&password=1&gender=여성&fruits=on
+
+        value 속성 필수
+        text01.html?username=admin&password=1&gender=남성&fruits=사과&fruits=딸기
+        -->
+
+      <div>
+        <input type="checkbox" name="fruits" id="" value="사과" />사과
+        <input type="checkbox" name="fruits" id="" value="바나나" />바나나
+        <input type="checkbox" name="fruits" id="" value="딸기" />딸기
+        <input type="checkbox" name="fruits" id="" value="포도" />포도
+        <input type="checkbox" name="fruits" id="" value="키위" />키위
+      </div>
+
+      <div>
+        <!-- 
+            input type='submit' : 버튼 클릭 시 form submit(action 주소로 전송)됨
+         -->
+        <input type="submit" value="보내기" />
+
+        <!-- type = 'button' : 클릭이 가능한 버튼으로 나타남(submit 기능 없음) -->
+        <input type="button" value="전송" />
+        <input type="reset" value="초기화" />
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 자바스크립트 객체
+      // 1. new Date()
+
+      let now = new Date();
+      document.write(now, "<br>");
+      document.write("연도 ", now.getFullYear(), "<br>");
+      document.write("월 ", now.getMonth() + 1, "<br>"); // 월은 0부터 시작
+      document.write("일 ", now.getDate(), "<br>");
+      document.write("시 ", now.getHours(), "<br>");
+      document.write("분 ", now.getMinutes(), "<br>");
+      document.write("초 ", now.getSeconds(), "<br>");
+      document.write(" ", now.toLocaleString(), "<br>");
+    </script>
+  </body>
+</html>

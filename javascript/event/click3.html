@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="demo">Click me</p>
+    <div>
+      <label for="">성별</label>
+      <input type="radio" name="gender" id="male" value="남" />남
+      <input type="radio" name="gender" id="female" value="여" />여
+    </div>
+    <script>
+      // p요소를 클릭하면 Click me ==> Good Job
+
+      let clickMe = () => {
+        document.querySelector("#demo").innerText = "Good Job";
+      };
+      document.querySelector("#demo").addEventListener("click", clickMe);
+
+      // 성별을 클릭하면 선택된 성별을 콘솔창 출력
+      let gender = (e) => {
+        console.log(e.target.value);
+      };
+      document.querySelector("div").addEventListener("click", gender);
+    </script>
+  </body>
+</html>

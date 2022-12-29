@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="class-one class-two">Exam</div>
+    <script>
+      // div 요소의 class 가져오기
+      // setAttriibute, img.src
+
+      let div = document.querySelector("div");
+      console.log(div);
+      console.log(div.getAttribute("class"));
+      console.log(div.classList);
+
+      // 클래스명 추가
+      div.classList.add("class-three");
+      // 클래스명 제거
+      div.classList.remove("class-one");
+      // 클래스명이 없는 경우 추가, 있으면 안 붙여줌
+      div.classList.toggle("visible");
+      // 특정 클래스명을 가지고 있는지 확인
+      console.log(div.classList.contains("visible"));
+      console.log(div.classList.contains("test"));
+      // 특정 클래스명 변경
+      div.classList.replace("class-two", "two");
+    </script>
+  </body>
+</html>

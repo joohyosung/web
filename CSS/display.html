@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        display: inline; /* 인라인 -> 블럭, 블럭 -> 인라인 */
+        width: auto;
+        height: 50px;
+        background-color: blueviolet;
+      }
+      span {
+        background-color: aqua;
+        display: block; /* 인라인 -> 블럭 : width, height 지정 가능 */
+        width: 200px;
+        height: 70;
+      }
+      p {
+        text-align: center;
+      }
+      p a {
+        display: inline-block;
+        width: 50px;
+        height: 40px;
+        background-color: aquamarine;
+        text-decoration: none;
+        line-height: 40px;
+      }
+
+      .hidden {
+        display: none; /* display:none(공간 차지하지 않음) visibility:hidden(공간 차지하고 있음) */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        블럭요소 : width 100%에서 시작, height 0에서 시작,
+        margin, padding을 줄 수 있음
+        인라인 요소 : width 0에서 시작, block 0에서 시작
+        margin, padding 좌우만 가능
+     -->
+    <div>내용1</div>
+    <div>내용2</div>
+    <div>내용3</div>
+    <span>span1</span>
+    <span>span2</span>
+    <span>span3</span>
+    <p>
+      <a href="">1</a>
+      <a href="">2</a>
+      <a href="">3</a>
+      <a href="">4</a>
+      <a href="">5</a>
+      <a href="">6</a>
+    </p>
+
+    <div class="hidden">Hidden Area</div>
+    <h1>Header1</h1>
+  </body>
+</html>

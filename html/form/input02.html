@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <fieldset>
+        <legend>날짜/시간 관련</legend>
+        <div>
+          <label for="">date</label>
+          <input type="date" name="date" id="" />
+        </div>
+        <div>
+          <label for="">datetime</label>
+          <input type="datetime" name="datetime" id="" />
+        </div>
+        <div>
+          <label for="">datetime-local</label>
+          <input type="datetime-local" name="datetime-local" id="" />
+        </div>
+        <div>
+          <label for="">month</label>
+          <input type="month" name="month" id="" />
+        </div>
+        <div>
+          <label for="">time</label>
+          <input type="time" name="time" id="" />
+        </div>
+        <div>
+          <label for="">week</label>
+          <input type="week" name="week" id="" />
+        </div>
+      </fieldset>
+      <div>
+        <label for="">range</label>
+        <input
+          type="range"
+          name=""
+          id=""
+          min="0"
+          max="100"
+          value="1"
+          step="10"
+        />
+      </div>
+      <div>
+        <label for="">tel</label>
+        <!-- pattern : 정규식 표현값을 이용해서 원하는 패턴 기입 -->
+        <input type="tel" name="" id="" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+      </div>
+      <div>
+        <label for="">search</label>
+        <input type="search" name="search" id="" />
+      </div>
+      <div>
+        <label for="">number</label>
+        <!-- type = 'number' : 문자가 입력될 수 없음 -->
+        <input
+          type="number"
+          name="number"
+          id=""
+          min="85"
+          max="120"
+          value="85"
+          step="5"
+        />
+      </div>
+      <div>
+        <label for="">url</label>
+        <!-- type = 'url' : url 형식에 맞지 않는 부분 확인(https://)-->
+        <input type="url" name="url" id="" />
+      </div>
+      <div>
+        <label for="">email</label>
+        <!-- type = 'email' : email 형식에 맞는지 간단한 검증 -->
+        <input type="email" name="email" id="" />
+      </div>
+      <div>
+        <label for="">color</label>
+        <input type="color" name="color" id="" />
+      </div>
+      <div>
+        <label for="">file</label>
+        <input type="file" name="file" id="" />
+      </div>
+      <div>
+        <label for="">hidden</label>
+        <!-- 
+        type = 'hidden'  : 화면에서 안 보임
+        사용자가 입력할 필요는 없으나 서버 쪽에서 이 값을 필요로 할 때 같이 보내기도 함
+        file=&custid=3487 
+        -->
+        <input type="hidden" name="custid" value="3487" />
+      </div>
+      <div>
+        <button type="submit">전송</button>
+      </div>
+    </form>
+  </body>
+</html>

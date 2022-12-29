@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* .area {
+        color: red;
+      }
+      .area p {
+        color: green;
+      }
+      p {
+        color: blue;
+      } */
+      /* #text {
+        color: red;
+      }
+      .area p {
+        color: green !important;
+      }
+      p {
+        color: blue;
+      } */
+      p#text2 {
+        text-decoration: underline;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+      스타일 우선순위
+      1. 명시도 점수가 높은 선언이 우선
+        (!important > 인라인 > 아이디 > 클래스 > 태그 > 전체 > 상속)
+      2. 점수가 같은 경우 가장 마지막에 해석이 되는 선언이 우선
+      3. 명시도는 상속 규칙보다 우선
+      4. !important 가 적용된 선언 방식이 다른 모든 방식보다 우선
+
+      :hover 와 같은 가상 클래스 선택자는 클래스 선택자 점수랑 동일
+      ::before 와 같은 가상 요소 선택자는 태그 선택자 점수랑 동일
+      :not() 점수 없음
+     -->
+    <div class="area">
+      <p id="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae est
+        voluptate earum! Ad dolorem magni ullam ipsa assumenda. Iusto corrupti
+        asperiores repellendus. Illo assumenda accusantium dolore incidunt aut,
+        ex rem?
+      </p>
+      <p id="text2" style="color: hotpink">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae est
+        voluptate earum! Ad dolorem magni ullam ipsa assumenda. Iusto corrupti
+        asperiores repellendus. Illo assumenda accusantium dolore incidunt aut,
+        ex rem?
+      </p>
+    </div>
+  </body>
+</html>

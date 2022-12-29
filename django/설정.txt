@@ -1,0 +1,86 @@
+1. 새로운 폴더 생섯 : django 세로운 폴더 생성
+
+2. 새로 생성된 폴더로 진입 : cd 새로운 폴더명
+
+3. settings.py 설정
+   django-admin startproject config .
+   python manage.py startapp 앱 명
+   config 폴더 내 settings.py 파일 안에 INSTALLED_APPS 에 앱 명 입력
+
+
+4. 장고 서버 구동 : python manage.py runserver
+
+5. django = 프레임워크, 웹개발에 필요한 많은 기능들을 제공
+            개발자가 신경써야 하는 부분들이 많이 만들어져 있음
+            ex)관리자 페이지 기능
+
+6. 사용자가 접근할 수 있는 경로 지정
+urls.py => 경로 지정
+url 설계
+http://127.0.0.1:8000/photo/ => 응답(현재 사진 목록 보여주기)
+http://127.0.0.1:8000/photo/new => 응답(새로운 사진 등록 폼 보여주기)
+http://127.0.0.1:8000/photo/2 => 응답(번호에 해당하는 사진 자세히 보여주기)
+http://127.0.0.1:8000/photo/2/edit => 응답(번호에 해당하는 사진 수정하기)
+http://127.0.0.1:8000/photo/2/remove => 응답(번호에 해당하는 사진 삭제하기)
+
+7. 데이터 베이스 : table 형태 dbms(오라클, mysql, mssql, mariadb)
+python언어는 내장 DB 제공 : SQLits3
+python manage.py migrate : 테이블 생성(sql 구문 실행)
+
+SQL 구문
+DDL : create, alter, drop
+DML : insert, select, update, delete
+DCL : grant, revoke
+
+1)테이블 생성(데이터 저장)
+create table register(
+    id varchar2(20) not null unique,
+    password varchar2(20) not null,
+    email varchar2(100),
+    mobile varchar2(50)
+)
+2) 데이터 등록
+insert into register(id,password,email,mobile) values('hong','1234','hong@gmail.com','010')
+3)데이터 조회
+select from 
+3)데이터 수정
+update 
+4)데이터 삭제
+delete
+
+Model : django에서 sql 쿼리문 대신 사용(ORM-Object Relational Mapping)
+모델 생성 = 테이블 생성
+python manage.py makemigrations = 모델을 테이블 생성하는 sql구문으로 변경
+python manege.py migrate (sql실행)
+
+8. 관리자 생성
+python manage.py createsuperuser
+
+9. 관리자 페이지
+1)user 생성
+2)group 생성
+3)데이터 삽입, 삭제, 수정
+
+10. 클라이언트가 서버에 요청한 페이지 보여줄 데이터
+1) https://127.0.01:8000/photo/ 요청
+2) config/urls.py 실행
+3) photoapp/urls.py 실행
+4) photoapp/views.py  home() 실행
+    => 테이블에서 데이터 전체 조회 photo.objects.all()
+       어떤 html 파일이 응답할 파일인지 지정 => photo_list.html
+5) photo_list 파일에서 데이터를 보기 좋게 나열
+
+11. Form Post 방식 필수 작업
+CSRF 토큰값을 같이 포함해서 전송 => CSRF공격을 막기 위해
+
+12. Primary Key(PK)
+not null, unique : 다른 데이터와 구별, 주민등록번호 역할
+ex) select * from photo where id=3;
+
+    select * from photo where description=3;
+
+13. 장고 템플릿 태그
+ex) {% block %}{% endblock %}
+
+14. Form클래스
+form 태그 안에 들어가는 내용 간편화

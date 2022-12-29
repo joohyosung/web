@@ -1,0 +1,13 @@
+h1:first-of-type {
+  color: red;
+}
+li:last-of-type {
+  color: blue;
+}
+
+h3:last-of-type {
+  color: blue0;
+}
+h4:nth-last-of-type(2) {
+  text-decoration: underline;
+}

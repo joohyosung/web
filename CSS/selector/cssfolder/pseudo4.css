@@ -1,0 +1,16 @@
+h1::before {
+  content: "Before ";
+  color: red;
+}
+h1::after {
+  content: "After ";
+  color: blue;
+}
+h3::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  display: inline-block; /* inline 속성 + block 속성 */
+  margin-right: 10px;
+}

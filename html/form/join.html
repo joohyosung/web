@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="get">
+      <fieldset>
+        <legend>필수사항</legend>
+        <p>
+          <label for="">이름</label>
+          <input type="text" name="name" id="name" required autofocus />
+        </p>
+        <p>
+          <label for="">이메일</label>
+          <input type="email" name="email" id="email" required />
+        </p>
+        <p>
+          <label for="">비밀번호</label>
+          <input type="password" name="password" id="password" required />
+        </p>
+      </fieldset>
+      <fieldset>
+        <legend>부가 입력 사항</legend>
+        <p>
+          <label for="">생년월일</label>
+          <input type="date" name="date" id="date" />
+        </p>
+        <p>
+          <label for="">거주지</label> <br />
+          <select name="address" id="address">
+            <option value="서울">서울</option>
+            <option value="경기도">경기도</option>
+            <option value="충청도">충청도</option>
+            <option value="전라도">전라도</option>
+            <option value="경상도">경상도</option>
+            <option value="강원도">강원도</option>
+            <option value="제주도">제주도</option>
+          </select>
+        </p>
+        <p>
+          <label for="">취미</label>
+          <input type="checkbox" name="취미" id="" value="독서" />독서
+          <input type="checkbox" name="여행" id="" value="여행" />여행
+          <input
+            type="checkbox"
+            name="영화감상"
+            id=""
+            value="영화감상"
+          />영화감상
+        </p>
+        <p>
+          <label for="">성별</label>
+          <input type="radio" name="gen" id="gen" value="남성" />남성
+          <input type="radio" name="gen" id="gen" value="여성" />여성
+        </p>
+        <p>
+          <label for="">사진을 등록해 주세요.</label>
+          <input type="file" name="file" id="" />
+        </p>
+        <p>
+          <label for="">방문 경로를 말씀해주세요</label> <br />
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+        </p>
+      </fieldset>
+      <input type="submit" value="회원가입" />
+      <input type="reset" value="재작성" />
+      <input type="button" value="전송" />
+    </form>
+  </body>
+</html>

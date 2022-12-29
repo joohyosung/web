@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header1">Header1</h1>
+    <h1 id="header2">Header2</h1>
+    <form action="" method="get">
+      <input type="text" name="username" id="username" value="홍길동" />
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+      // $ => jquery 문법시작
+      let h1 = $("#header1");
+      console.log(h1);
+      // header1 글자 변경?, id 변경?, class 부여 가능?
+
+      // h1 텍스트 노드 가져오기
+      console.log(h1.html());
+      console.log(h1.text());
+
+      h1.html("변경")
+      h1.text("변경2")
+
+      // h2 태그 요소 가져오기
+      let h2 = $("#header2");
+      console.log(h2);
+
+      h2.text(h2.text() = "with getElmentById()")
+
+      //input dyth요소 가져오기
+      let username = $("#username");
+      console.log(username);
+      // form 요소의 값을 가져올 때는 value
+      console.log(username.value);
+    </script>
+  </body>
+</html>

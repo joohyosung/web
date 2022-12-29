@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ajax(비동기 자바스크립트)
+      // 함수 동작 시 비동기 식으로 동작
+
+      // 요청 => 서버(응답(1.data없음 2.data전송), 에러)
+      fetch("https://jsonplaceholder.typicode.com/todos/1")
+        .then((response) => response.json()) // 응답을 json형태로 변경
+        .then((json) => console.log(json)); // json형태로 된 응답을 화면 출력
+    </script>
+  </body>
+</html>
