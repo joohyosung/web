@@ -1,13 +1,69 @@
 명령어
 shell 진입 : python manage.py shell
+
 1. 삽입
-1)p = Person(first_name='kim', last_name='young')
+1)모델 객체 생성 후 객체를 이용해서 save()
+  p = Person(first_name='kim', last_name='young')
   p.save()
-  Person.objects.create(first_name='kim', last_name='young')
+  Person.objects.create(first_name='kim', last_name='young')  
+
 2. 조회
-*참고 : wkdrh cnrdir gkatn(get + exception) - get_object_or_404()
-1)전체조회
-  Person.objects.all()
+*참고 : 장고 축약 함수(get + exception) - get_object_or_404()
+1)전체조회 
+  sql 구문 : select * from person
+  ORM : Person.objects.all()
 2)개별조회(아이디가 1번이거나, 이름이 홍길동....)
+  ORM
   Person.objects.filter(id=1)
+  Person.objects.filter(first_name__contains=’k’) : ‘k’ 가 포함되는 값
+  Person.objects.filter(first_name__icontains=’Park’) : 대소문자 구분 안하고 포함되는 값
   Person.objects.get(id=1) : 찾는 대상이 없으면 DoesNotExist 발생 가져올 대상이 하나만 매치되어야 한다.
+3)제외하고(exclude == Not)
+  sql구문 : select * from person where not (first_name='park')
+  ORM : Person.object.exclude(first_name='park')
+
+3. 관계(Relationship)  
+  테이블과 테이블 사이의 관계
+  1:1(one to one) : models.OneToOneField
+  M:1(many to one) : models.ForeignKey(Musician, on_delete=models.CASCADE)
+  M:M(many to many) : models.ManytoManyField()
+  ORM : Album.objects.create(artist=Musician.objects.get(id=1),name='sun',release_date='2022-10-15',num_stars=3)
+
+4. 집계함수
+1)count()
+  sql구문 : select count(first_name) from person;
+  ORM : Musician.objects.count()
+
+5. 정렬순서
+1)order_by()
+  sql구문 : select * from person odrder by first_name asc;  (오름차순)
+  sql구문 : select * from person odrder by first_name desc; (내림차순)
+  ORM : Musician.objects.order_by('정렬할 필드명')  (오름차순)
+  ORM : Musician.objects.order_by('-정렬할 필드명') (내림차순)
+
+6. _set : 연관된 테이블의 정보를 추출
+  musician = Musician.objects.get(id=1)
+  musician.album_set.all()
+  musician.album_set.count()
+  musician.album_set.filter(release_date='2022-12-30')
+  musician.album_set.filter(release_date__year='2022')
+
+7. .values_list('필드명') : 특정 필드들만 추출할 때 사용(튜플로 리턴)
+  Fruit.objects.values_list("name") : select name from fruit;  
+  Fruit.objects.values_list('name', flat=True) : flat=True -> 리스트로 리턴
+
+8. 수정 : update fruit set 수정할 내용, 수정 내용... where id=1;
+  -name이 pk일 때
+   fruit = Fruit.objects.create(name='Apple')
+   fruit.name = 'Pear' (PK가 변경이 가능한가?)
+   fruit.save() : (pk 변경이 불가하므로 새로운 객체가 추가됨)
+
+* DML
+  select 조회
+  단순 조회 select * from table;
+           select * from table where id=1;
+
+  join or subquery
+    select a.id, a.name, a.age, b.school, b.explanation
+    from a left join b on a.id = b.id order by a.id asc
+  
