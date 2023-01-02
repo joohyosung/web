@@ -1,0 +1,8 @@
+template 폴더
+app1 사용할 템플릿 파일이라면 
+app1 / templates 폴더 생성 - html 파일 생성
+
+app2 사용할 템플릿 파일이라면 
+app2 / templates 폴더 생성 - html 파일 생성
+
+=> 한 프로젝트에서 여러 개의 앱에서 사용할 템플릿이 동일하다면?

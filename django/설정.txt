@@ -6,6 +6,7 @@
    django-admin startproject config .
    python manage.py startapp 앱 명
    config 폴더 내 settings.py 파일 안에 INSTALLED_APPS 에 앱 명 입력
+   LANGUAGE_CODE = 'ko-kr'  TIME_ZONE = 'Asia/Seoul'로 변경
 
 
 4. 장고 서버 구동 : python manage.py runserver

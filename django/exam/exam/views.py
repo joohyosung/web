@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NameForm, MusicianForm
 from .models import Musician
+from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy 
 
 # Create your views here.
 def index(request):
@@ -104,4 +107,44 @@ def musician_detail(request, pk):
     """
     musician = get_object_or_404(Musician, pk=pk)
     form = MusicianForm(instance = musician)
-    return render(request, 'exam/detail.html', {"form":form})    
+    return render(request, 'exam/detail.html', {"form":form}) 
+
+# 클래스 뷰
+# TemplateView == render
+# RedirectView == redirect
+# ListView - 모델 설정
+
+class SampleView(TemplateView):
+    template_name = 'exam/sample.html'
+
+class MusicianListView(ListView):
+    model = Musician
+    template_name = 'exam/list.html'# exam/musician_list.html
+    context_object_name = 'list'    # 생략 가능(단, 모델소문자_list : context_object_name = 'list' 기본값)
+
+class MusicianDetailView(DetailView):
+    model = Musician
+    template_name = 'exam/musician_detail.html'
+    
+class MusicianCreateView(CreateView):
+    template_name = 'exam/create.html'
+    form_class = MusicianForm
+    success_url = reverse_lazy('musician_class_list')
+
+class MusicianUpdateView(UpdateView):
+    template_name = 'exam/edit.html'
+    model = Musician
+    fields = '__all__'
+    context_object_name = 'form'
+    # 성공 시 pk를 가지고 detail로 이동
+    # 부모의 get_success_url 재정의
+    def get_success_url(self) -> str:
+        return reverse_lazy('musician_class_detail', args=[self.object.pk])
+
+class MusicianDeleteView(DeleteView):
+    model = Musician
+    success_url = reverse_lazy('musician_class_list')
+
+    # get 오버라이딩
+    def get(self, *args, **kwargs):
+        return self.delete(*args, **kwargs)

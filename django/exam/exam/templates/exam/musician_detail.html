@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block contents %}
+  {{musician}}
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+        <label for="{{field.id_for_label}}">{{field.label}}</label>
+        <input type="{{field.field.widget.input_type}}" class='form-control' id="{{field.id_for_label}}" name="{{field.name}}" value="{{field.value}}" readonly="readonly">
+      </div>
+      {% if field.errors %}
+        {{field.errors}}
+      {% endif %}
+    {% endfor %}
+    <div>
+      <button type="submit" class='btn btn-primary'>뒤로가기</button>
+    </div>
+  </form>
+{% endblock contents %}
+{% block script %}
+  <script>
+    // 이벤트 대상 찾기
+    document
+      .querySelector("form")
+      .addEventListener("submit", (e) => {
+        e.preventDefault(); // submit 기능 중지
+        location.href = "{% url 'musician_function_list' %}";
+      })
+  </script>
+{% endblock script %}

@@ -1,0 +1,10 @@
+http://127.0.0.1:8000/polls/                전체 질문 리스트
+http://127.0.0.1:8000/polls/1/              상세보기(투표)
+http://127.0.0.1:8000/polls/1/result/       투표 결과보기
+http://127.0.0.1:8000/polls/1/vote/         투표
+
+select question_text, choice_text
+from question q join choice e on q.id = c.queastion_id
+
+외래키 ==> 조인작업
+참고 외래키
