@@ -6,3 +6,33 @@ app2 사용할 템플릿 파일이라면
 app2 / templates 폴더 생성 - html 파일 생성
 
 => 한 프로젝트에서 여러 개의 앱에서 사용할 템플릿이 동일하다면?
+
+custom urls
+user/login/ [name='login]
+user/logout/ [name='logout]
+
+django.contrib.auth.urls.py
+
+accounts/ login/ [name='login'] => 연결된 view(함수, 클래스)가 존재, 로그인 성공 시 이동할 url 지정됨
+template file => registration/login.html
+로그인 시도 => http://127.0.0.1:8000/accounts/profile/로 이동
+ㄴ> 변경 가능
+# 로그인 성공 후 이동 URL 지정
+settings.py에서 LOGIN_REDIRECT_URL = "/" 입력
+
+accounts/ logout/ [name='logout']
+accounts/ password_change/ [name='password_change']
+accounts/ password_change/done/ [name='password_change_done']
+accounts/ password_reset/ [name='password_reset']
+accounts/ password_reset/done/ [name='password_reset_done']
+accounts/ reset/<uidb64>/<token>/ [name='password_reset_confirm']
+accounts/ reset/done/ [name='password_reset_complete']
+
+쟝고 - 회원앱
+1. USER 모델 사용 여부
+   1) 그대로 사용
+   2) 새로 만들어서 사용
+
+2. 로그인 / 로그아웃
+   1) 쟝고의 뷰 이용
+   2) 새로 만들어서 사용

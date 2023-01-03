@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="my-3">
+    <div class="row">
+      <div class="col-4">
+        <h4>회원가입</h4>
+      </div>
+      <div class="col-8 text-end">
+        <span>또는
+          <a href="{% url 'users:login' %}">로그인 하세요.</a>
+        </span>
+      </div>
+    </div>
+    {% include 'form_errors.html' %}
+    <form action="" method="post">
+        {% csrf_token %}
+      {% comment %} {{form.as_p}} {% endcomment %}
+      {% for field in form %}
+        <div class="form-group mb-3">
+          <label for="{{field.id_for_label}}">{{field.label}}</label>
+          <input type="{{field.field.widget.input_type}}" class='form-control' id="{{field.id_for_label}}" name="{{field.name}}" placeholder="{{field.label}}" value="{{field.value|default_if_none:""}}">
+        <!-- value="{{field.value|default_if_none:""}}" : value를 보여주던지 value가 없다면 "" 비워주세요. -->
+        </div>
+      {% endfor %}
+      <div class="form-group">
+        <button type="submit" class='btn btn-primary'>회원가입</button>
+      </div>
+    </form>
+  </div>
+{% endblock contents %}

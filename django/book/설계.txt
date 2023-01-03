@@ -1,0 +1,5 @@
+book 폴더 생성
+startproject
+bookapp / userapp 셍성
+config/settings.py : 앱 등록, ko-kr, Asia/Seoul, templates 폴더 지정, static 폴더 지정
+                     Login / Logout 성공 후 이동할 URL 지정

@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-p8y1qnmtl6@+hxmx2*o$$qrdm--4)r=b7ij37g2sv@36eo$1g2'
+SECRET_KEY = 'django-insecure-ybojr3jokls($o!udck27$0d=j&d9=s4+)4$86-6xn7l!zm9()'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,9 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app1',
-    'app2',
-    'users',
+    'bookapp',
+    'userapp',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +56,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'templates'], # default 인식하는 template 폴더 외에 다른 폴더를 저장하고 싶을 때
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,8 +125,5 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# 로그인 성공 후 이동 URL 지정
-# 쟝고의 로그인 기능을 이용하게 되면 로그인 성공 후 profile/로 이동하기 때문
-LOGIN_REDIRECT_URL = "/"
-# 쟝고의 로그아웃에서 원하는 곳으로 이동
-LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
