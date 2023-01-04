@@ -3,3 +3,8 @@ startproject
 bookapp / userapp 셍성
 config/settings.py : 앱 등록, ko-kr, Asia/Seoul, templates 폴더 지정, static 폴더 지정
                      Login / Logout 성공 후 이동할 URL 지정
+
+bookapp : https://127.0.0.1:8000/books/ ==> 도서 목록 전체
+bookapp : https://127.0.0.1:8000/books/1000 ==> 도서 상세 조회
+book_list a 태그 완성
+views detail 작성 ==> get_object_or_404

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block contents %}
+  {% include 'form_errors.html' %}
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group mb-3">
+        <label for="{{field.id_for_label}}">{{field.label}}</label>
+        <input type="{{field.field.widget.input_type}}" class='form-control' id="{{field.id_for_label}}" name="{{field.name}}">
+      </div>
+    {% endfor %}
+    <div class="form-group mb-3">
+      <button type="submit" class="btn btn-success">입력</button>
+      <button type="submit" class="btn btn-primary">리스트</button>
+    </div>
+  </form>
+{% endblock contents %}
+{% block script %}
+  <script>
+    document
+      .querySelector(".btn-primary")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        location.href = "{% url 'list' %}"
+      })
+  </script>
+{% endblock script %}

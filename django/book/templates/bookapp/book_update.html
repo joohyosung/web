@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block contents %}
+  {% include 'form_errors.html' %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group mb-3">
+      <label for="code">Code</label>
+      <input type="text" name="code" id="code" class="form-control" value="{{form.code.value}}" readonly="readonly">
+    </div>
+    <div class="form-group mb-3">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" class="form-control" value="{{form.title.value}}" readonly="readonly">
+    </div>
+    <div class="form-group mb-3">
+      <label for="author">Author</label>
+      <input type="text" name="author" id="author" class="form-control" value="{{form.author.value}}" readonly="readonly">
+    </div>
+    <div class="form-group mb-3">
+      <label for="price">Price</label>
+      <input type="text" name="price" id="price" class="form-control" value="{{form.price.value}}">
+    </div>
+    {% if user.is_authenticated and user.is_superuser %}
+      <div class="form-group mb-3">
+        <button type="submit" class="btn btn-success">수정</button>
+        <button type="submit" class="btn btn-danger">삭제</button>
+        <button type="submit" class="btn btn-primary">뒤로가기</button>
+      </div>
+    {% endif %}
+  </form>
+{% endblock contents %}
+{% block script %}
+  <script>
+    document
+      .querySelector(".btn-primary")
+      .addEventListener('click', (e) => {
+        e.preventDefault(); // submit 기능 중지
+        location.href = "{% url 'detail' form.code.value %}";
+      })
+    // 삭제 버튼 클릭 시 pk 전송
+    document
+      .querySelector('.btn-danger')
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        location.href = "{% url 'remove' form.code.value %}"
+      })
+  </script>
+{% endblock script %}
