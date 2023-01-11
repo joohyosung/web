@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block contents %}
+  <div class="row mt-5">
+    <div class="col-12 text-center">
+      <h1>글 작성</h1>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-12">
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group mb-2">
+          <label for="title" class="form-label">제목</label>
+          <input type="text" name="title" id="title" class="form-control" value="{{board.title}}" readonly="readonly">
+        </div>
+        <div class="form-group mb-2">
+          <label for="contents" class="form-label">내용</label>
+          <textarea name="contents" id="contents" class='form-control' row='10' readonly="readonly">{{board.contents}}</textarea>
+        </div>
+        <div class="form-group mb-2">
+          <label for="writer" class="form-label">작성자</label>
+          <input type="text" name="writer" id="writer" class="form-control" value="{{board.writer}}" readonly="readonly">
+        </div>
+        <div class="form-group mb-2">
+          <label for="register_dttm" class="form-label">작성날짜</label>
+          <input type="text" name="register_dttm" id="register_dttm" class="form-control" value="{{board.register_dttm}}" readonly="readonly">
+        </div>
+        <div class="form-group mb-2">
+          {% for tag in boardapp.tags.all %}
+            <span class="badge bg-secondary">
+              #{{tag.name}}
+            </span>
+          {% endfor %}
+        </div>
+        <div class="form-group mb-2">
+          <button class="btn btn-primary" type="submit">목록</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock contents %}
+{% block script %}
+  <script>
+    document
+      .querySelector(".btn-primary")
+      .addEventListener('click', (e) => {
+        e.preventDefault();
+        location.href = "{% url 'board_list' %}"
+      })
+  </script>
+
+{% endblock script %}

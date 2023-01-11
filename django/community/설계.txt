@@ -1,0 +1,16 @@
+장고user
+customUser : AbstractUser, AbstracBaseUser 상속
+
+client          --전송-->       server
+1)회원가입                       views.py : class형, 함수형(request.POST[] || form사용)
+ㄴ>form태그(action='')           
+
+Paginator 주요 메소드
+previous_page_number() : 이전 페이지 번호
+next_page_number() : 다음 페이지 번호
+has_previous() : 이전 페이지가 존재하면 True
+has_next()     : 다음 페이지가 존재하면 True
+
+attribute
+paginator.num_pages : 전체 페이지 번호
+number : 현재 페이지 번호

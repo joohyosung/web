@@ -18,4 +18,12 @@ from . import views
 
 urlpatterns = [
     path('', views.post_list, name='post_list'),
+    # http://127.0.0.1:8000/blogs/write/
+    path('write/', views.post_write, name='post_write'),
+    # http://127.0.0.1:8000/blogs/4/
+    path('<int:pk>/', views.post_detail, name='post_detail'),
+    # http://127.0.0.1:8000/blogs/comment_create/
+    path('comment_create/', views.comment_create, name='comment_create'),
+    # http://127.0.0.1:8000/blogs/post/like/
+    path('post/like', views.post_like, name='post_like'),
 ]

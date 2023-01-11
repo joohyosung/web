@@ -1,0 +1,46 @@
+user 객체
+속성 - username, password, email(필수요소 아님), first_name, last_name
+
+프로젝트에 필요한 user
+email 필드 == id 개념 == username
+gender 필드(필수는 아님)
+password
+name 필수
+
+==> 장고 user 사용은 불가하고 새로운 user 정의
+Abstactuser
+AbstactBaseUser 
+
+image가 DB에 등록되는 방법:
+경로만 DB에 등록
+settings.py 에 추가 입력
+ㄴ> # 파일 업로드
+      import os
+      MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+      MEDIA_URL = "/media/"
+
+게시물의 좋아요 등
+form -> 동기식
+ajax -> 비동기식
+        1) fetch
+        2)jquery
+
+detail에서 좋아요 여부 정보 가져오기
+
+퍼가기 기능
+django-social-share 라이브러리 사용
+django-social-widgets 라이브러리도 있다.
+
+태그 기능 
+django-taggit 라이브러리 사용 (#어쩌구 저쩌구)
+
+배포
+http://127.0.0.1:8000/blog/8/
+
+→ 127.0.0.1 == localhost ⇒ 외부 접근불가
+
+→ 외부 접근 가능한 형태로 앱 배포
+
+- 실제서버가 필요
+- [settings.py] (http://settings.py) 의 SECRET_KEY 가려야함
+- [settings.py] DEBUG = False로 바꾸고 배포해야 한다.(연습 시에는 True로 두어야 로컬서버 작동)
