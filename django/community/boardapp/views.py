@@ -33,6 +33,8 @@ def board_write(request):
     """
     if request.method =="POST":
         form = BoardForm(request.POST)
+
+        print("##############",request.POST['tags'])
         if form.is_valid():
             board = form.save(commit=False) # 유저 정보가 없기 때문에 commit=False
             board.writer = request.user

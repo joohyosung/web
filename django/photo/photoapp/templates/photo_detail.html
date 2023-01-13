@@ -14,9 +14,9 @@
   <div class="row py-3">
     <div class="col">
       <!-- <a href="/photo/{{photo.id}}/edit/" class="btn btn-success">Edit Photo</a> -->
-      <a href="{% url 'edit' pk=photo.pk %}" class="btn btn-success">Edit Photo</a>
+      <a href="{% url 'edit' photo.pk %}" class="btn btn-success">Edit Photo</a>
       <!-- id 값 넘겨주기 -->
-      <a href="{% url 'remove' pk=photo.pk %}" class="btn btn-danger">Delete Photo</a>
+      <a href="{% url 'remove' photo.id %}" class="btn btn-danger">Delete Photo</a>
       <a href="{% url 'home' %}" class="btn btn-info">List Photo</a>
     </div>
   </div>

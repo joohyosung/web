@@ -6,4 +6,4 @@ class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
         # 모델에서 사용할 필드들을 나영(튜플, 리스트)
-        fields = ["title", "auther", "image", "description", "price"]
+        fields = "__all__"

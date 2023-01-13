@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 추가하고자 하는 앱 작성
     'photoapp',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

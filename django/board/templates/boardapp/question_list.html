@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load board_filter %}
+{% block contents %}
+<div class="container my-3">
+  <h1>Question List</h1>
+  <div class="row justify-content-end my-3">
+    <div class="col-4 input-group">
+      <input type="text" name="keyword" id="keyword" class="form-control">
+      <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary">찾기</button>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th>작성일자</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for question in questions %}
+      <tr>
+        <td>{{questions.paginator.count|sub:questions.start_index|sub:forloop.counter|add:1}}</td>
+        <td>
+          <a href="{% url 'detail' question.pk %}" class="nav-link">{{question.title}}
+            <span class="text-danger small m-2">({{question.answer_set.count}})</span>
+          </a>
+        </td>
+        <td>{{question.author}}</td>
+        <td>{{question.created_dttm}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="row mt-2">
+    <div class="col-12">
+      <!--페이징 처리-->
+      <nav aria-label="...">
+        <ul class="pagination justify-content-center">
+          {% if questions.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href='?page={{questions.previous_page_number}}'
+              data-page='{{questions.previous_page_number}}'>Prev</a>
+          </li>
+          {% endif %}
+          {% for page in questions.paginator.page_range %}
+          {% if page >= questions.number|add:-5 and page <= questions.number|add:5 %} <li
+            class="page-item {% if page == questions.number %}active{% endif %}">
+            <a class="page-link" href="?page={{page}}" data-page='{{page}}'>{{page}}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            {% if questions.has_next %}
+            <li class="page-item">
+              <a class="page-link" href='?page={{questions.next_page_number}}'
+                data-page='{{questions.next_page_number}}'>Next</a>
+            </li>
+            {% endif %}
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <a href="{% url 'question_create' %}" class="btn btn-primary">질문등록</a>
+    </div>
+  </div>
+  {% endblock contents %}

@@ -26,7 +26,7 @@
           <input type="text" name="register_dttm" id="register_dttm" class="form-control" value="{{board.register_dttm}}" readonly="readonly">
         </div>
         <div class="form-group mb-2">
-          {% for tag in boardapp.tags.all %}
+          {% for tag in board.tags.all %}
             <span class="badge bg-secondary">
               #{{tag.name}}
             </span>

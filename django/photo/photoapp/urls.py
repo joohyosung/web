@@ -15,9 +15,11 @@ urlpatterns = [
     # http://127.0.0.1:8000/photo/new/ + get, post
     path("new/", views.post, name='post'),
     # http://127.0.0.1:8000/photo/2
-    path("<int:pk>/", views.detail, name="detail"),
+    # path("<int:pk>/", views.detail, name="detail"),
+    path("serialize_detail/<int:pk>/", views.serialize_detail, name="detail"),
+
     # http://127.0.0.1:8000/photo/remove
-    path("<int:pk>/remove/", views.remove, name="remove"),
+    path("serialize_detail/<int:pk>/remove/", views.remove, name="remove"),
     # http://127.0.0.1:8000/photo/edit
-    path("<int:pk>/edit/", views.edit, name="edit")
+    path("serialize_detail/<int:pk>/edit/", views.edit, name="edit")
 ]

@@ -1,0 +1,10 @@
+장고 회원 앱
+1) 장고 user - book에서 썼던 방식
+2) custome user - blog, commnuity에서 썼던 방식
+장고 user를 사용
+
+로그인 시
+id == username / password 입력
+=> 입력 값 가져온 후 로그인 정보가 일치하는지 확인
+=> 세션에 사용자 정보 저장
+ㄴ> 장고 로그인/로그아웃 기능 제공하는 view를 사용

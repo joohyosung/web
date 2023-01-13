@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import Photo
 from .forms import PhotoForm
+# api
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializer import PhotoSerializer
 
 # Create your views here.
 def home(request):
@@ -91,4 +95,12 @@ def edit(request, pk):
     else:
         form = PhotoForm(instance=photo)
     
-    return render(request, "photo_edit.html", {"form":form})
+    return render(request, "photo_edit.html", {"form":form, "pk":pk})
+
+@api_view(['GET'])
+def serialize_detail(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    serializer = PhotoSerializer(photo)
+    photo_serializer = serializer.data
+
+    return render(request, 'photo_detail.html', {'photo':photo_serializer})
