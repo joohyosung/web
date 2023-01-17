@@ -52,8 +52,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 소셜로그인 시 인증정보가 들어오는 사이트 관리
+    'django.contrib.sites',
+
     'boardapp',
     'userapp',
+]
+# 소셜로그인 시 필요
+INSTALLED_APPS += [
+    'allauth', 
+    'allauth.account', 
+    'allauth.socialaccount', 
+    'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -79,9 +92,24 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # 소셜로그인 시 필요
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
             ],
         },
     },
+]
+
+# 소셜로그인 시 필요
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
@@ -144,4 +172,50 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # 장고의 로그인 기능을 이용하게 되면 로그인 성공 후 profile/로 이동하기 때문에
 LOGIN_REDIRECT_URL = '/'
 # 장고의 로그아웃에서 원하는 곳으로 이동
-LOGOUT_REDIRECT_URL = 'login/'
+LOGOUT_REDIRECT_URL = '/'
+
+# 네이버를 이메일 서버로 설정하기
+DEFAULT_FROM_EMAIL = "el6912@naver.com" # 네이버 메일 주소
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST = "smtp.naver.com"
+EMAIL_HOST_USER = "el6912"  # 네이버 아이디
+EMAIL_HOST_PASSWORD = "rptdoa0323!@^^"  # 네이버 비밀번호
+EMAIL_PORT = 465
+
+# 구글 소셜로그인 시 필요 google.json 읽어오기
+import os
+import json
+from django.core.exceptions import ImproperlyConfigured
+
+google = os.path.join(BASE_DIR, "google.json")
+with open(google) as f:
+    google = json.loads(f.read())
+
+def get_social(setting, google=google):
+    try:
+        return google[setting]
+    except KeyError:
+        error_msg = "set the {0} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google":{
+        "APP":{
+            'client_id':get_social("client_id"),
+            'secret':get_social("client_secret"),
+        },
+        "SCOPE":{
+            'profile',
+            'email',
+        },
+        "AUTH_PARAMS":{
+            'access_type':'offline'
+        }
+    }
+}
+
+SOCIAL_ACCOUNT_LOGIN_ON_GET = True
+# 127.0.0.1 사이트 아이디
+SITE_ID = 2

@@ -1,0 +1,13 @@
+{
+  "client_id": "537180487974-15mq1q92gkic7dbc3948a2tl6p8tb4mr.apps.googleusercontent.com",
+  "project_id": "sound-paratext-375004",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_secret": "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",
+  "redirect_uris": [
+    "http://127.0.0.1:8000/accounts/google/login/callback/",
+    "http://localhost:8000/accounts/google/login/callback/"
+  ],
+  "javascript_origins": ["http://127.0.0.1:8000", "http://localhost:8000"]
+}

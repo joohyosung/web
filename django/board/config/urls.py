@@ -15,10 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from boardapp.views import index
+from boardapp.views import base_views
+
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('board/', include('boardapp.urls')),
     path('user/', include('userapp.urls')),
-    path('', index),
+    path('', base_views.index),
+    
+    # django-allauth에서 제공하는 urls 가져오기
+    path('accounts/', include('allauth.urls')),
+
+    # path('', include("django.contrib.auth.urls")),
+    # path('password_reset/', auth_views.PasswordChangeView.as_view(), name='password_reset'),
+    # path('password_reset/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_reset_done'),
+    # path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    # path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
+    
 ]

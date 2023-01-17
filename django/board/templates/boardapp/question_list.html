@@ -4,8 +4,15 @@
 <div class="container my-3">
   <h1>Question List</h1>
   <div class="row justify-content-end my-3">
+    <div class="col-2">
+      <select name="" id="so" class="row justify-content-end my-3">
+        <option value="recent" {% if so == 'recent' %} selected="selected" {% endif %}>최신순</option>
+        <option value="recommend" {% if so == 'recommend' %} selected {% endif %}>추천순</option>
+        <option value="popular" {% if so == 'popular' %} selected {% endif %}>인기순</option>
+      </select>
+    </div>
     <div class="col-4 input-group">
-      <input type="text" name="keyword" id="keyword" class="form-control">
+      <input type="text" name="keyword" id="keyword" class="form-control" value="{{keyword|default_if_none:''}}">
       <div class="input-group-append">
         <button type="button" class="btn btn-outline-secondary">찾기</button>
       </div>
@@ -15,7 +22,9 @@
     <thead>
       <tr>
         <th>번호</th>
+        <th>추천수</th>
         <th>제목</th>
+        <th>조회수</th>
         <th>글쓴이</th>
         <th>작성일자</th>
       </tr>
@@ -25,10 +34,16 @@
       <tr>
         <td>{{questions.paginator.count|sub:questions.start_index|sub:forloop.counter|add:1}}</td>
         <td>
-          <a href="{% url 'detail' question.pk %}" class="nav-link">{{question.title}}
+          {% if question.voter.count %}
+          <span class="badge bg-warning px-2 py-1">{{question.voter.count}}</span>
+          {% endif %}
+        </td>
+        <td>
+          <a href="{% url 'detail' question.pk %}" class="nav-link move">{{question.title}}
             <span class="text-danger small m-2">({{question.answer_set.count}})</span>
           </a>
         </td>
+        <td>{{question.view_cnt}}</td>
         <td>{{question.author}}</td>
         <td>{{question.created_dttm}}</td>
       </tr>
@@ -42,21 +57,19 @@
         <ul class="pagination justify-content-center">
           {% if questions.has_previous %}
           <li class="page-item">
-            <a class="page-link" href='?page={{questions.previous_page_number}}'
-              data-page='{{questions.previous_page_number}}'>Prev</a>
+            <a class="page-link" href='#' data-page='{{questions.previous_page_number}}'>Prev</a>
           </li>
           {% endif %}
           {% for page in questions.paginator.page_range %}
           {% if page >= questions.number|add:-5 and page <= questions.number|add:5 %} <li
             class="page-item {% if page == questions.number %}active{% endif %}">
-            <a class="page-link" href="?page={{page}}" data-page='{{page}}'>{{page}}</a>
+            <a class="page-link" href="#" data-page='{{page}}'>{{page}}</a>
             </li>
             {% endif %}
             {% endfor %}
             {% if questions.has_next %}
             <li class="page-item">
-              <a class="page-link" href='?page={{questions.next_page_number}}'
-                data-page='{{questions.next_page_number}}'>Next</a>
+              <a class="page-link" href='#' data-page='{{questions.next_page_number}}'>Next</a>
             </li>
             {% endif %}
         </ul>
@@ -66,4 +79,118 @@
       <a href="{% url 'question_create' %}" class="btn btn-primary">질문등록</a>
     </div>
   </div>
+  <!--검색 시 동작하는 form-->
+  <form action="{% url 'index' %}" id="searchForm">
+    <input type="hidden" name="keyword" value="{{keyword|default_if_none:''}}" class="keyword">
+    <input type="hidden" name="page" value="{{page|default_if_none:''}}" id="page">
+    <input type="hidden" name="so" value="{{so|default_if_none:''}}" id="sort">
+  </form>
   {% endblock contents %}
+  {% block script %}
+  <script>
+    const searchForm = document.querySelector("#searchForm");
+    // 검색버튼 클릭 시
+    // 사용자가 입력한 검색어 가져오기
+    document
+      .querySelector(".btn-outline-secondary")
+      .addEventListener("click", () => {
+        let keyword = document
+          .querySelector("#keyword")
+          .value;
+
+        // 가져온 검색어를 searchForm 안의 keyword 요소 안의 value 값으로 지정
+        document
+          .querySelector(".keyword")
+          .value = keyword;
+        // searchForm 안의 page 요소의 값을 1로 지정
+        document
+          .querySelector("#page")
+          .value = 1;
+        // searchForm 전송
+        searchForm.submit();
+
+      })
+
+    // 하단의 1,2,3,4... 클릭 시 searchForm 전송
+    let pages = document.querySelectorAll(".page-link")
+    pages.forEach((item, idx) => {
+      item.addEventListener('click', (e) => {
+        document
+          .querySelector("#page")
+          .value = e.target.dataset.page;
+        // searchForm 전송
+        searchForm.submit();
+      })
+    })
+
+    // 정렬조건(so) change되면
+    // select에서 선택된 값 가져온 후 searchForm 안의 sort요소의 value 값을 지정
+    document
+      .querySelector("#so")
+      .addEventListener("click", (e) => {
+        document
+          .querySelector("#sort")
+          .value = e.target.value;
+
+        searchForm.submit()
+      })
+
+    // 상세보기 : keyword, sort, page 값이 따라가야 함
+    //           searchForm 보내서 필요한 정보를 detail로 보내기
+    const titles = document.querySelectorAll(".move");
+    titles.forEach((title, idx) => {
+      title.addEventListener("click", (e) => {
+        // 제목 클릭 시 a 태그 기능 중지
+        e.preventDefault();
+        // a의 href 값 가져오기
+        searchForm.setAttribute("action", e.target.getAttribute('href'));
+        searchForm.submit();
+      })
+    })
+      /*
+$(function () {
+const searchForm = $("#searchForm");
+// 검색버튼 클릭 시
+// 사용자가 입력한 검색어 가져오기
+$(".btn-outline-secondary").on("click", () => {
+let keyword = $("#keyword").val();
+
+// 가져온 검색어를 searchForm 안의 keyword 요소 안의 value 값으로 지정
+$(".keyword").val(keyword);
+// searchForm 안의 page 요소의 값을 1로 지정
+$("#page").val(1);
+// searchForm 전송
+searchForm.submit();
+
+})
+
+// 하단의 1,2,3,4... 클릭 시 searchForm 전송
+$(".page-link").on('click', (e) => {
+e.preventDefault();
+$("#page").val($(this).attr('href'));
+// searchForm 전송
+searchForm.submit();
+})
+
+
+// 정렬조건(so) change되면
+// select에서 선택된 값 가져온 후 searchForm 안의 sort요소의 value 값을 지정
+$("#so").on("click", (e) => {
+$("#sort").val($(this).val());
+
+searchForm.submit()
+})
+
+// 상세보기 : keyword, sort, page 값이 따라가야 함
+//           searchForm 보내서 필요한 정보를 detail로 보내기
+$(".move").on("click", (e) => {
+// 제목 클릭 시 a 태그 기능 중지
+e.preventDefault();
+// a의 href 값 가져오기
+searchForm.attr("action", $(this).attr('href'));
+searchForm.submit();
+})
+})
+*/
+  </script>
+  {% endblock script %}

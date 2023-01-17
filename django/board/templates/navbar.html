@@ -21,7 +21,7 @@
         {% endif %}
         {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="">비밀번호 변경</a>
+            <a class="nav-link" href="{% url 'password_change' %}">비밀번호 변경</a>
           </li>
         {% endif %}
       </ul>
