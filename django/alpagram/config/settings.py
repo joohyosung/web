@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from django.core.exceptions import ImproperlyConfigured
-import json
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,19 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-secret_file = os.path.join(BASE_DIR, 'secrets.json')
-with open(secret_file) as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "set the {0} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-
-SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = 'django-insecure-f*7@dk=2a^ae09mmvb_$(0i+8^92$p!zd2@nyle)&zpiijhksa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -52,21 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # 소셜로그인 시 인증정보가 들어오는 사이트 관리
-    'django.contrib.sites',
-
-    'boardapp',
-    'userapp',
-]
-# 소셜로그인 시 필요
-INSTALLED_APPS += [
-    'allauth', 
-    'allauth.account', 
-    'allauth.socialaccount', 
-    'allauth.socialaccount.providers.kakao',
-    'allauth.socialaccount.providers.google',
-
 ]
 
 MIDDLEWARE = [
@@ -84,7 +54,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR, 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,24 +62,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                # 소셜로그인 시 필요
-                # `allauth` needs this from django
-                'django.template.context_processors.request',
             ],
         },
     },
-]
-
-# 소셜로그인 시 필요
-AUTHENTICATION_BACKENDS = [
-    
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-    
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
@@ -148,9 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Seoul'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -161,61 +116,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# 로그인 성공 후 이동 URL 지정
-# 장고의 로그인 기능을 이용하게 되면 로그인 성공 후 profile/로 이동하기 때문에
-LOGIN_REDIRECT_URL = '/'
-# 장고의 로그아웃에서 원하는 곳으로 이동
-LOGOUT_REDIRECT_URL = '/'
-
-# 네이버를 이메일 서버로 설정하기
-DEFAULT_FROM_EMAIL = "" # 네이버 메일 주소
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
-EMAIL_HOST = "smtp.naver.com"
-EMAIL_HOST_USER = ""  # 네이버 아이디
-EMAIL_HOST_PASSWORD = ""  # 네이버 비밀번호
-EMAIL_PORT = 465
-
-# 구글 소셜로그인 시 필요 google.json 읽어오기
-import os
-import json
-from django.core.exceptions import ImproperlyConfigured
-
-google = os.path.join(BASE_DIR, "google.json")
-with open(google) as f:
-    google = json.loads(f.read())
-
-def get_social(setting, google=google):
-    try:
-        return google[setting]
-    except KeyError:
-        error_msg = "set the {0} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-SOCIALACCOUNT_PROVIDERS = {
-    "google":{
-        "APP":{
-            'client_id':get_social("client_id"),
-            'secret':get_social("client_secret"),
-        },
-        "SCOPE":{
-            'profile',
-            'email',
-        },
-        "AUTH_PARAMS":{
-            'access_type':'offline'
-        }
-    }
-}
-
-SOCIAL_ACCOUNT_LOGIN_ON_GET = True
-# 127.0.0.1 사이트 아이디
-SITE_ID = 2
