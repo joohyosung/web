@@ -1,0 +1,7 @@
+alpagram
+-apis앱
+-contents앱
+-users앱
+1) 모델생성
+    - 이메일(ID), 이름, 닉네임, 비밀번호
+2) 장고 User 모델 사용

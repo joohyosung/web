@@ -1,2 +1,4 @@
 # prettier 포메터 사용 시 이 파일은 포매터 적용하지 말 것
 question_list.html
+bootstrap.min.css
+bootstrap.bundle.min.js

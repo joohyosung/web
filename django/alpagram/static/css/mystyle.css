@@ -1,0 +1,72 @@
+.display-none {
+  display: none;
+}
+
+/* 클래스명 부착하지 않는 방법
+.right-second{
+    display: none;
+}
+*/
+body {
+  padding-top: 5rem;
+}
+.navbar {
+  width: 70%;
+}
+.card,
+.follow_list {
+  width: 30rem;
+}
+textarea.control {
+  display: block;
+  width: 21rem;
+  font-size: 0.8rem;
+  border: #fff;
+  outline-color: #fff;
+}
+.button {
+  border: none;
+  background-color: white;
+  color: #0095f6;
+  opacity: 0.4;
+}
+a:link {
+  text-decoration: none;
+}
+.right-second .friends-info {
+  font-size: 1.1rem;
+  font-weight: 550;
+  color: #8d8f91;
+}
+.right-second .info {
+  font-size: 12px;
+  line-height: 16px;
+  color: #848587;
+}
+.right-second input::placeholder {
+  font-size: 13px;
+}
+.cut-line {
+  color: #848587;
+  font-size: 13px;
+}
+.top-menu span {
+  line-height: 1;
+}
+.top-menu .dropdown button {
+  border: none;
+  background-color: #fff;
+}
+.top-menu .dropdown button > img {
+  width: 30px;
+  height: 30px;
+}
+.top-menu [class~="d-print-inline"] {
+  font-size: 30px;
+}
+a {
+  color: black;
+}
+a:hover {
+  color: black;
+}
