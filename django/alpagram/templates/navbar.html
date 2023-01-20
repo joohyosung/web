@@ -1,3 +1,4 @@
+{% load static %}
 <div class="bg-white border-bottom fixed-top text-center d-flex justify-content-center">
   <nav class="navbar align-items-center justify-content-around">
     <div>
@@ -19,7 +20,7 @@
       <span class="material-icons-outlined d-print-inline mx-2">
         send
       </span>
-      <a href="#" id="add_box" data-toggle="modal" data-target="#exampleModalCenter">
+      <a href="#" id="add_box" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
         <span class="material-icons-outlined d-print-inline mx-2">
           add_box
         </span>
@@ -30,20 +31,20 @@
       <span class="material-icons-outlined d-print-inline mx-2">
         favorite_border
       </span>
-      <!-- 로그인 이후 사용자 유저 프로필 사진 보이는 곳-->
-
-      <span class="dropdown mx-2 align-top">
-        <button class="dropdown-toogle px-0 py-0" data-toggle="dropdown">
-          <img src="" alt="" class="rounded-circle"/>
-        </button>
-        <div class="dropdown-menu mt-2">
-          <a class="dropdown-item" href="">프로필</a>
-          <a class="dropdown-item">설정</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="">로그아웃</a>
-        </div>
-      </span>
-
+      <!-- 로그인 이후 사용자 유저 프로필 사진 보이는 곳 로그인 사용자 == request.user -->
+      {% if user.is_authenticated %}
+        <span class="dropdown mx-2 align-top">
+          <button class="dropdown-toogle px-0 py-0" data-bs-toggle="dropdown">
+            <img src="{{ user.profile.img.url }}" alt="" class="rounded-circle"/>
+          </button>
+          <div class="dropdown-menu mt-2">
+            <a class="dropdown-item" href="{% url 'profile_edit' %}">프로필</a>
+            <a class="dropdown-item">설정</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}">로그아웃</a>
+          </div>
+        </span>
+      {% endif %}
     </div>
   </nav>
   <div class="search-list container">
