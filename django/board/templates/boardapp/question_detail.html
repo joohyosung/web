@@ -168,72 +168,78 @@
               <!--답변 댓글 영역 종료-->
             </div>
             <!--검색 시 동작하는 form-->
-          <form action<form action="{% url 'index' %}" id="listForm"> <input type="hidden" name="keyword" value="{{keyword|default_if_none:''}}" class="keyword"> <input type="hidden" name="page" value="{{page|default_if_none:''}}" id="page"> <input type="hidden" name="so" value="{{so|default_if_none:''}}" id="sort"> </form> <a href="" class="back_to_list btn btn-primary btn-sm my-4"> <i class="fas fa-list">목록으로</i>
-        </a>
+            <form action="{% url 'index' %}" id="listForm">
+              <input type="hidden" name="keyword" value="{{keyword|default_if_none:''}}" class="keyword">
+              <input type="hidden" name="page" value="{{page|default_if_none:''}}" id="page">
+              <input type="hidden" name="so" value="{{so|default_if_none:''}}" id="sort">
+            </form>
+            <a href="" class="back_to_list btn btn-primary btn-sm my-4">
+              <i class="fas fa-list">목록으로</i>
+            </a>
 
-      </div>
+          </div>
+        </div>
+      {% endfor %}
+      <!--답변 작성 form-->
+      {% include 'form_errors.html' %}
+      <form action="{% url 'answer_create' question.id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+          <textarea name="content" id="content" rows="10" class="form-control" {% if not user.is_authenticated %} hidden="hidden" {% endif %}></textarea>
+        </div>
+        <button type=" submit" class="btn btn-primary" {% if not user.is_authenticated %} hidden="hidden" {% endif %}>답변 등록</button>
+      </form>
+      <!--답변 내용 종료-->
     </div>
-  {% endfor %}
-  <!--답변 작성 form-->
-  {% include 'form_errors.html' %}
-  <form action="{% url 'answer_create' question.id %}" method="post">
-    {% csrf_token %}
-    <div class="form-group mb-3">
-      <textarea name="content" id="content" rows="10" class="form-control" {% if not user.is_authenticated %} hidden="hidden" {% endif %}></textarea>
-    </div>
-    <button type=" submit" class="btn btn-primary" {% if not user.is_authenticated %} hidden="hidden" {% endif %}>답변 등록</button>
-  </form>
-  <!--답변 내용 종료-->
-</div>
 
-</div>
+  </div>
 {% endblock contents %}
 {% block script %}
-<script>
-// 질문 or 답변 삭제 버튼 클릭 시 confirm(정말로 삭제하시겠습니까?)
-/*
-                let elements = document.querySelectorAll('.btn-outline-danger')
-                elements.forEach((ele, idx) => {
-                  .addEventListener("click", (e) => {
-                  //confirm() : 확인을 클릭하면 data-url값 가져오기 location.href -> data-url 대입
-                    if (confirm('정말로 삭제하시겠습니까?')) {
-                      location.href = e.target.dataset.url;
-                      };
-                    })
-                  })
-                */
+  <script>
+    // 질문 or 답변 삭제 버튼 클릭 시 confirm(정말로 삭제하시겠습니까?)
+    /*
+                    let elements = document.querySelectorAll('.btn-outline-danger')
+                    elements.forEach((ele, idx) => {
+                      .addEventListener("click", (e) => {
+                      //confirm() : 확인을 클릭하면 data-url값 가져오기 location.href -> data-url 대입
+                        if (confirm('정말로 삭제하시겠습니까?')) {
+                          location.href = e.target.dataset.url;
+                          };
+                        })
+                      })
+                    */
 
-// 목록으로 클릭 시 listForm submit 시키기
-/*
-        document
-          .querySelector(".back_to_list")
-          .addEventListener("click", (e) => {
-            e.preventDefault();
+    // 목록으로 클릭 시 listForm submit 시키기
+    /*
             document
-              .querySelector("#listForm")
-              .submit();
-          })
-        */
+              .querySelector(".back_to_list")
+              .addEventListener("click", (e) => {
+                e.preventDefault();
+                document
+                  .querySelector("#listForm")
+                  .submit();
+              })
+            */
 
-$(function () {
-  $('.btn-outline-danger, .delete').on("click", function (e) {
-    if (confirm('정말로 삭제하시겠습니까?')) {
-      location.href = $(this).data('url');
-    }
-  });
+    $(function () {
+      $('.btn-outline-danger, .delete').on("click", function (e) {
+        if (confirm('정말로 삭제하시겠습니까?')) {
+          location.href = $(this).data('url');
+        }
+      });
 
-  // 추천 버튼 클릭 시 정말로 추천하시겠습니까?
-  $('.recommend').on('click', function (e) {
-    if (confirm('정말로 추천하시겠습니까?')) {
-      location.href = $(this).data('url');
-    }
-  });
+      // 추천 버튼 클릭 시 정말로 추천하시겠습니까?
+      $('.recommend').on('click', function (e) {
+        if (confirm('정말로 추천하시겠습니까?')) {
+          location.href = $(this).data('url');
+        }
+      });
 
-  // 목록으로 클릭 시 listForm submit 시키기
-  $(".back_to_list").on("click", (e) => {
-    e.preventDefault();
-    $("#listForm").submit();
-  })
-})
-</script>
+      // 목록으로 클릭 시 listForm submit 시키기
+      $(".back_to_list").on("click", (e) => {
+        e.preventDefault();
+        $("#listForm").submit();
+      })
+    })
+  </script>
 {% endblock script %}
